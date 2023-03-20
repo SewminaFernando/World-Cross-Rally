@@ -1,0 +1,106 @@
+.background{
+    -fx-background-color : #303139
+}
+
+.close-button{
+    -fx-background-color : #303139
+}
+
+.close-button:hover{
+    -fx-background-color : #F75590
+}
+
+.close-button:pressed{
+    -fx-background-color : #ff2343
+}
+
+.get-started-button{
+    -fx-border-color: #66fcf1;
+    -fx-border-width: 2;
+    -fx-border-radius: 25;
+    -fx-background-color: transparent;
+    -fx-font-family:"Segoe UI", Helvetica, Arial, sans-serif;
+    -fx-font-weight: bold;
+    -fx-font-size: 16; /* 12 */
+    -fx-text-fill: #ffffff;
+}
+
+.get-started-button:hover{
+    -fx-border-color: #000000;
+    -fx-border-width: 2;
+    -fx-border-radius: 25;
+    -fx-background-radius: 25;
+    -fx-background-color: #66fcf1;
+    -fx-font-family:"Segoe UI", Helvetica, Arial, sans-serif;
+    -fx-font-weight: bold;
+    -fx-font-size: 16; /* 12 */
+    -fx-text-fill: #000000;
+}
+
+.get-started-button:pressed{
+    -fx-border-color: #000000;
+    -fx-border-width: 2;
+    -fx-border-radius: 25;
+    -fx-background-radius: 25;
+    -fx-background-color: #45a29e;
+    -fx-font-family:"Segoe UI", Helvetica, Arial, sans-serif;
+    -fx-font-weight: bold;
+    -fx-font-size: 16; /* 12 */
+    -fx-text-fill: #000000;
+}
+
+/*
+.back-button{
+    -fx-background-radius: 50;
+    -fx-background-color: transparent;
+}
+
+.back-button:hover{
+    -fx-background-radius: 50;
+    -fx-background-color: #66fcf1;
+}
+
+.back-button:pressed{
+    -fx-background-radius: 50;
+    -fx-background-color: #45a29e;
+}
+*/
+
+.menu-button{
+    -fx-border-color: #66fcf1;
+    -fx-border-width: 2;
+    -fx-border-radius: 25;
+    -fx-background-color: transparent;
+}
+
+.menu-button:hover{
+    -fx-border-color: #66fcf1;
+    -fx-border-width: 2;
+    -fx-border-radius: 25;
+    -fx-background-radius: 25;
+    -fx-background-color: rgba(31, 41, 51, 0.5);
+}
+
+.menu-button:pressed{
+    -fx-border-color: #66fcf1;
+    -fx-border-width: 2;
+    -fx-border-radius: 25;
+    -fx-background-radius: 25;
+    -fx-background-color: rgba(31, 41, 51, 0.75);
+}
+
+.navbar-buttons{
+    -fx-background-color : #1f2833;
+    -fx-font-family:"Segoe UI", Helvetica, Arial, sans-serif;
+    -fx-font-weight: bold;
+    -fx-font-size: 16; /* 12 */
+    -fx-text-fill: #45a29e;
+}
+
+.navbar-buttons:hover{
+    -fx-background-color : #1f3843;
+    -fx-font-family:"Segoe UI", Helvetica, Arial, sans-serif;
+    -fx-font-weight: bold;
+    -fx-font-size: 16; /* 12 */
+    -fx-text-fill: #45a29e;
+}

@@ -3,6 +3,7 @@ package code.programmingcw_test1;
 import javafx.collections.FXCollections;
 import javafx.collections.ObservableList;
 import javafx.collections.transformation.FilteredList;
+import javafx.collections.transformation.SortedList;
 import javafx.fxml.FXML;
 import javafx.fxml.FXMLLoader;
 import javafx.fxml.Initializable;
@@ -74,7 +75,7 @@ public class DriverPageController implements Initializable{
                 String currentPoints = fields[4];
                 Driver driver = new Driver(age,currentPoints,fullName,carModel,teamName);
                 drivers.add(driver);
-                System.out.println(driver);
+
             }
         } catch (IOException e) {
             e.printStackTrace();
@@ -209,9 +210,9 @@ public class DriverPageController implements Initializable{
             });
         });
 
-        //SortedList <Driver> sortedData = new SortedList<>(filteredData);
-        //sortedData.comparatorProperty().bind(driversTable.comparatorProperty());
-        //ObservableList<Driver> observableFilteredData = FXCollections.observableList(filteredData);
+//        SortedList<Driver> sortedData = new SortedList<>(filteredData);
+//        sortedData.comparatorProperty().bind(driversTable.comparatorProperty());
+//        ObservableList<Driver> observableFilteredData = FXCollections.observableList(filteredData);
         driversTable.setItems(filteredData);
     }
 

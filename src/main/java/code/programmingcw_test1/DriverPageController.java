@@ -95,6 +95,7 @@ public class DriverPageController implements Initializable{
         driversTable.setOnMouseClicked(event -> {
             if (event.getClickCount()==1){
                 Driver driver = driversTable.getSelectionModel().getSelectedItem();
+                driversTable.setItems(drivers);
                 if (driver != null){
                     fullNameField.setText(driver.getFullName());
                     ageField.setText(Integer.toString(driver.getAge()));
@@ -155,6 +156,7 @@ public class DriverPageController implements Initializable{
         carModelField.clear();
         fullNameField.clear();
         teamNameField.clear();
+        searchField.clear();
     }
 
     //Save data to the csv file

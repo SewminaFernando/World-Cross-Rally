@@ -7,9 +7,12 @@ import java.util.List;
 
 public class DriverList {
     List<Driver> driverList= new ArrayList<>();
+    public List<Driver> fileReader(){
 
-    public void fileReader(){
-        String fname,age,carModel,teamName,currentPoints;
+
+
+        String fname,carModel,teamName;
+        int currentPoints,age;
 
         try {
             BufferedReader reader = new BufferedReader(new FileReader("src/main/java/csvfiles/Drivers.csv"));
@@ -17,17 +20,35 @@ public class DriverList {
             while ((line = reader.readLine()) != null) {
                 String[] data = line.split(",");
                 fname = data[0];
-                age = data[1];
+                age = Integer.parseInt(data[1]);
                 carModel = data[2];
                 teamName = data[3];
-                currentPoints = data[4];
-                Driver driver = new Driver(age,currentPoints,fname,carModel,teamName);
+                currentPoints = Integer.parseInt(data[4]);
+                Driver driver = new Driver(fname,age,carModel,teamName,currentPoints);
                 driverList.add(driver);
             }
             reader.close();
+            return driverList;
         } catch (Exception e) {
             e.printStackTrace();
         }
+        return null;
+    }
+
+    public List<Driver> searchByName(String name) {
+        List<Driver> exactMatch = new ArrayList<>();
+        List<Driver> substringMatch = new ArrayList<>();
+
+        for (Driver driver : driverList) {
+            if (driver.fullName.equals(name)) {
+                exactMatch.add(driver);
+            } else if (driver.fullName.contains(name)) {
+                substringMatch.add(driver);
+            }
+        }
+
+        exactMatch.addAll(substringMatch);
+        return exactMatch;
     }
 
 }

@@ -17,12 +17,6 @@ public class WorldCrossRallyChampionship extends Application {
     public void start(Stage stage) throws IOException {
         FXMLLoader fxmlLoader = new FXMLLoader(WorldCrossRallyChampionship.class.getResource("main.fxml"));
         Scene scene = new Scene(fxmlLoader.load(), 900, 600);
-
-        //Create undecorated window i.e. remove the top bar
-        // stage.initStyle(StageStyle.UNDECORATED);
-
-        new DraggableStage().dragStage(scene,stage);
-
         stage.setScene(scene);
         stage.show();
 

@@ -52,7 +52,5 @@ public class MainController {
         Stage stage = (Stage) ((Node) event.getSource()).getScene().getWindow();
         Parent root = FXMLLoader.load(getClass().getResource("menu.fxml"));
         stage.setScene(new Scene(root, 900 , 600));
-
-        new DraggableStage().dragStage(root.getScene(),stage);
     }
 }

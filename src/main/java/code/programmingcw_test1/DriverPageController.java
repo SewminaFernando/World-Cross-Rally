@@ -3,7 +3,6 @@ package code.programmingcw_test1;
 import javafx.collections.FXCollections;
 import javafx.collections.ObservableList;
 import javafx.collections.transformation.FilteredList;
-import javafx.collections.transformation.SortedList;
 import javafx.fxml.FXML;
 import javafx.fxml.FXMLLoader;
 import javafx.fxml.Initializable;
@@ -22,7 +21,10 @@ import javafx.stage.Stage;
 
 import java.io.*;
 import java.net.URL;
+import java.util.List;
 import java.util.ResourceBundle;
+
+import static java.lang.Integer.parseInt;
 
 
 public class DriverPageController implements Initializable{
@@ -51,7 +53,7 @@ public class DriverPageController implements Initializable{
     @FXML
     private Label errorMsg;
 
-    ObservableList<Driver> drivers = FXCollections.observableArrayList();
+
 
     @Override
     public void initialize(URL url, ResourceBundle resource){
@@ -63,23 +65,27 @@ public class DriverPageController implements Initializable{
         currentPoints.setCellValueFactory(new PropertyValueFactory<Driver,Integer>("currentPoints"));
 
         // Load data from CSV file into an ObservableList
+        
+        DriverList driverList = new DriverList();
+        List<Driver> list =  driverList.fileReader();
+        ObservableList<Driver> drivers = FXCollections.observableArrayList(list);
 
-        try (BufferedReader reader = new BufferedReader(new FileReader("src/main/java/csvfiles/Drivers.csv"))) {
-            String line;
-            while ((line = reader.readLine()) != null) {
-                String[] fields = line.split(",");
-                String fullName = fields[0];
-                String age = fields[1];
-                String carModel = fields[2];
-                String teamName = fields[3];
-                String currentPoints = fields[4];
-                Driver driver = new Driver(age,currentPoints,fullName,carModel,teamName);
-                drivers.add(driver);
-
-            }
-        } catch (IOException e) {
-            e.printStackTrace();
-        }
+//        try (BufferedReader reader = new BufferedReader(new FileReader("src/main/java/csvfiles/Drivers.csv"))) {
+//            String line;
+//            while ((line = reader.readLine()) != null) {
+//                String[] fields = line.split(",");
+//                String fullName = fields[0];
+//                int age = parseInt(fields[1]);
+//                String carModel = fields[2];
+//                String teamName = fields[3];
+//                int currentPoints = parseInt(fields[4]);
+//                Driver driver = new Driver(fullName,age,carModel,teamName,currentPoints);
+//                drivers.add(driver);
+//
+//            }
+//        } catch (IOException e) {
+//            e.printStackTrace();
+//        }
 
         // Set the ObservableList as the items for the TableView
         driversTable.setItems(drivers);
@@ -91,10 +97,10 @@ public class DriverPageController implements Initializable{
                 Driver driver = driversTable.getSelectionModel().getSelectedItem();
                 if (driver != null){
                     fullNameField.setText(driver.getFullName());
-                    ageField.setText(driver.getAge());
+                    ageField.setText(Integer.toString(driver.getAge()));
                     carModelField.setText(driver.getCarModel());
                     teamNameField.setText(driver.getTeamName());
-                    currentPointsField.setText(driver.getCurrentPoints());
+                    currentPointsField.setText(Integer.toString(driver.getCurrentPoints()));
                 }
             }
         });
@@ -102,7 +108,7 @@ public class DriverPageController implements Initializable{
 
     @FXML
     void addDriver(MouseEvent event) {
-        Driver newDriver = new Driver(ageField.getText(),currentPointsField.getText(),fullNameField.getText(), carModelField.getText(), teamNameField.getText());
+        Driver newDriver = new Driver(fullNameField.getText(),parseInt(ageField.getText()),carModelField.getText(), teamNameField.getText(),parseInt(currentPointsField.getText()));
 
         if (checkEmptyTextFields()){
             errorMsg.setTextFill(Color.RED);
@@ -130,7 +136,7 @@ public class DriverPageController implements Initializable{
 
     @FXML
     void updateDriver(MouseEvent event) {
-        Driver newDriver = new Driver(ageField.getText(),currentPointsField.getText(),fullNameField.getText(), carModelField.getText(), teamNameField.getText());
+        Driver newDriver = new Driver(fullNameField.getText(),parseInt(ageField.getText()), carModelField.getText(), teamNameField.getText(),parseInt(currentPointsField.getText()));
         if (checkEmptyTextFields()){
             errorMsg.setTextFill(Color.RED);
             errorMsg.setText("Please fill all the fields.");
@@ -179,41 +185,73 @@ public class DriverPageController implements Initializable{
         Stage stage = (Stage) ((Node) event.getSource()).getScene().getWindow();
         Parent root = FXMLLoader.load(getClass().getResource("drivers-list-page.fxml"));
         stage.setScene(new Scene(root, 1200, 832));
-
-        new DraggableStage().dragStage(root.getScene(), stage);
     }
 
 
     @FXML
     void searchingData(MouseEvent event) {
-        FilteredList <Driver> filteredData = new FilteredList<>(drivers, p -> true); //Pass the data to a filtered list
+
+//        DriverList list = new DriverList();
+//        List<Driver> filteredList = list.searchByName(searchField.getText());
+//        ObservableList<Driver> drivers = FXCollections.observableArrayList(filteredList);
+        //driversTable.setItems(drivers);
+
+        ObservableList<Driver> filteredData = FXCollections.observableArrayList();
+        ObservableList<Driver> originalData = driversTable.getItems();
+        driversTable.setItems(filteredData);
+
+
         searchField.textProperty().addListener((observable, oldValue, newValue) -> {
-            filteredData.setPredicate(driver -> {
-                if (newValue == null || newValue.isEmpty()) {
-                    return true;
-                }
+            filteredData.clear();
 
-                String lowerCaseFilter = newValue.toLowerCase();
-
-                if (driver.getFullName().toLowerCase().contains(lowerCaseFilter)) {
-                    return true;
-                } else if (driver.getAge().toLowerCase().contains(lowerCaseFilter)) {
-                    return true;
-                } else if (driver.getCarModel().toLowerCase().contains(lowerCaseFilter)) {
-                    return true;
-                } else if (driver.getTeamName().toLowerCase().contains(lowerCaseFilter)) {
-                    return true;
-                } else if (driver.getCurrentPoints().toLowerCase().contains(lowerCaseFilter)) {
-                    return true;
+            for (Driver data : originalData) {
+                if (dataMatchesSearchCriteria(data, newValue)) {
+                    filteredData.add(data);
                 }
-                return false;
-            });
+            }
         });
+
+
+
+//        FilteredList <Driver> filteredData = new FilteredList<>(drivers, p -> true); //Pass the data to a filtered list
+//        searchField.textProperty().addListener((observable, oldValue, newValue) -> {
+//            filteredData.setPredicate(driver -> {
+//                if (newValue == null || newValue.isEmpty()) {
+//                    return true;
+//                }
+//
+//                String lowerCaseFilter = newValue.toLowerCase();
+//
+//                if (driver.getFullName().toLowerCase().contains(lowerCaseFilter)) {
+//                    return true;
+//                } else if (driver.getCarModel().toLowerCase().contains(lowerCaseFilter)) {
+//                    return true;
+//                } else if (driver.getTeamName().toLowerCase().contains(lowerCaseFilter)) {
+//                    return true;
+//                }
+//                return false;
+//            });
+//        });
 
 //        SortedList<Driver> sortedData = new SortedList<>(filteredData);
 //        sortedData.comparatorProperty().bind(driversTable.comparatorProperty());
 //        ObservableList<Driver> observableFilteredData = FXCollections.observableList(filteredData);
+
         driversTable.setItems(filteredData);
     }
+
+    private boolean dataMatchesSearchCriteria(Driver data, String newValue) {
+        if (newValue == null || newValue.isEmpty()) {
+            return true;
+        }
+
+        String lowerCaseFilter = newValue.toLowerCase();
+
+        if (data.getFullName().toLowerCase().contains(lowerCaseFilter)) {
+            return true;
+        }
+        return false;
+    }
+
 
 }

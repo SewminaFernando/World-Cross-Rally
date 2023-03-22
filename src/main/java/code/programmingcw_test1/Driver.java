@@ -2,11 +2,12 @@ package code.programmingcw_test1;
 
 public class Driver {
 
-    String fullName,carModel,teamName,age,currentPoints;
+    String fullName,carModel,teamName;
+    int age,currentPoints;
 
     //Adding constructors
 
-    public Driver(String age, String currentPoints, String fullName, String carModel, String teamName) {
+    public Driver(String fullName, int age, String carModel, String teamName, int currentPoints) {
         this.age = age;
         this.currentPoints = currentPoints;
         this.fullName = fullName;
@@ -15,11 +16,11 @@ public class Driver {
     }
 
     //setters
-    public void setAge(String age) {
+    public void setAge(int age) {
         this.age = age;
     }
 
-    public void setCurrentPoints(String currentPoints) {
+    public void setCurrentPoints(int currentPoints) {
         this.currentPoints = currentPoints;
     }
 
@@ -38,11 +39,11 @@ public class Driver {
     //getters
 
 
-    public String getAge() {
+    public int getAge() {
         return age;
     }
 
-    public String getCurrentPoints() {
+    public int getCurrentPoints() {
         return currentPoints;
     }
 

@@ -2,7 +2,6 @@ package code.programmingcw_test1;
 
 import javafx.collections.FXCollections;
 import javafx.collections.ObservableList;
-import javafx.collections.transformation.FilteredList;
 import javafx.fxml.FXML;
 import javafx.fxml.FXMLLoader;
 import javafx.fxml.Initializable;
@@ -68,7 +67,8 @@ public class DriverPageController implements Initializable{
         
         DriverList driverList = new DriverList();
         List<Driver> list =  driverList.fileReader();
-        ObservableList<Driver> drivers = FXCollections.observableArrayList(list);
+        List<Driver> sortedList = driverList.sortByScore(list);
+        ObservableList<Driver> drivers = FXCollections.observableArrayList(sortedList);
 
 //        try (BufferedReader reader = new BufferedReader(new FileReader("src/main/java/csvfiles/Drivers.csv"))) {
 //            String line;
@@ -118,6 +118,7 @@ public class DriverPageController implements Initializable{
             errorMsg.setTextFill(Color.GREEN);
             errorMsg.setText("You Successfully added a driver.");
             driversTable.getItems().add(newDriver);
+            driversTable.refresh();
             clearTextFields(event);
         }
     }
@@ -146,6 +147,7 @@ public class DriverPageController implements Initializable{
             errorMsg.setText("You Successfully updated a driver's detail.");
             driversTable.getItems().add(newDriver);
             deleteDriver(event);
+            driversTable.refresh();
         }
     }
 

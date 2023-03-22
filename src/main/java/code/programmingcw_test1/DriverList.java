@@ -6,11 +6,9 @@ import java.util.ArrayList;
 import java.util.List;
 
 public class DriverList {
-    List<Driver> driverList= new ArrayList<>();
+
     public List<Driver> fileReader(){
-
-
-
+        List<Driver> driverList= new ArrayList<>();
         String fname,carModel,teamName;
         int currentPoints,age;
 
@@ -35,20 +33,18 @@ public class DriverList {
         return null;
     }
 
-    public List<Driver> searchByName(String name) {
-        List<Driver> exactMatch = new ArrayList<>();
-        List<Driver> substringMatch = new ArrayList<>();
+    public List<Driver> sortByScore(List<Driver> arrayList) {
 
-        for (Driver driver : driverList) {
-            if (driver.fullName.equals(name)) {
-                exactMatch.add(driver);
-            } else if (driver.fullName.contains(name)) {
-                substringMatch.add(driver);
+        for (int i = 0; i < arrayList.size() - 1; i++) {
+            for (int j = 0; j < arrayList.size() - i - 1; j++) {
+                if (arrayList.get(j).getCurrentPoints() < arrayList.get(j + 1).getCurrentPoints()) {
+                    Driver temp = arrayList.get(j);
+                    arrayList.set(j, arrayList.get(j + 1));
+                    arrayList.set(j + 1, temp);
+                }
             }
         }
-
-        exactMatch.addAll(substringMatch);
-        return exactMatch;
+        return arrayList;
     }
 
 }

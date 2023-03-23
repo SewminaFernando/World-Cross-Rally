@@ -1,5 +1,6 @@
 package code.programmingcw_test1;
 
+import javafx.animation.FadeTransition;
 import javafx.collections.FXCollections;
 import javafx.collections.ObservableList;
 import javafx.fxml.FXML;
@@ -16,11 +17,12 @@ import javafx.scene.control.cell.PropertyValueFactory;
 import javafx.scene.input.MouseEvent;
 import javafx.scene.paint.Color;
 import javafx.stage.Stage;
+import javafx.util.Duration;
 
 
 import java.io.*;
 import java.net.URL;
-import java.util.List;
+import java.util.Objects;
 import java.util.ResourceBundle;
 
 import static java.lang.Integer.parseInt;
@@ -57,36 +59,13 @@ public class DriverPageController implements Initializable{
     @Override
     public void initialize(URL url, ResourceBundle resource){
         // Set up the table columns
-        fullName.setCellValueFactory(new PropertyValueFactory<Driver,String>("fullName"));
-        age.setCellValueFactory(new PropertyValueFactory<Driver,Integer>("age"));
-        carModel.setCellValueFactory(new PropertyValueFactory<Driver,String>("carModel"));
-        teamName.setCellValueFactory(new PropertyValueFactory<Driver,String>("teamName"));
-        currentPoints.setCellValueFactory(new PropertyValueFactory<Driver,Integer>("currentPoints"));
+        fullName.setCellValueFactory(new PropertyValueFactory<>("fullName"));
+        age.setCellValueFactory(new PropertyValueFactory<>("age"));
+        carModel.setCellValueFactory(new PropertyValueFactory<>("carModel"));
+        teamName.setCellValueFactory(new PropertyValueFactory<>("teamName"));
+        currentPoints.setCellValueFactory(new PropertyValueFactory<>("currentPoints"));
 
-        // Load data from CSV file into an ObservableList
-        
-        DriverList driverList = new DriverList();
-        List<Driver> list =  driverList.fileReader();
-        List<Driver> sortedList = driverList.sortByScore(list);
-        ObservableList<Driver> drivers = FXCollections.observableArrayList(sortedList);
-
-//        try (BufferedReader reader = new BufferedReader(new FileReader("src/main/java/csvfiles/Drivers.csv"))) {
-//            String line;
-//            while ((line = reader.readLine()) != null) {
-//                String[] fields = line.split(",");
-//                String fullName = fields[0];
-//                int age = parseInt(fields[1]);
-//                String carModel = fields[2];
-//                String teamName = fields[3];
-//                int currentPoints = parseInt(fields[4]);
-//                Driver driver = new Driver(fullName,age,carModel,teamName,currentPoints);
-//                drivers.add(driver);
-//
-//            }
-//        } catch (IOException e) {
-//            e.printStackTrace();
-//        }
-
+        ObservableList<Driver> drivers = FXCollections.observableArrayList();
         // Set the ObservableList as the items for the TableView
         driversTable.setItems(drivers);
 
@@ -95,7 +74,7 @@ public class DriverPageController implements Initializable{
         driversTable.setOnMouseClicked(event -> {
             if (event.getClickCount()==1){
                 Driver driver = driversTable.getSelectionModel().getSelectedItem();
-                driversTable.setItems(drivers);
+                //driversTable.setItems(drivers);
                 if (driver != null){
                     fullNameField.setText(driver.getFullName());
                     ageField.setText(Integer.toString(driver.getAge()));
@@ -107,48 +86,205 @@ public class DriverPageController implements Initializable{
         });
     }
 
+//    @FXML
+//    void addDriver(MouseEvent event) {
+//
+////        try {
+////            int age = Integer.parseInt(ageField.getText());
+////            if (age < 18 || age > 50) {
+////                throw new IllegalArgumentException("Age must be between 18 and 50");
+////            }
+////            int currentPoints = Integer.parseInt(currentPointsField.getText());
+////            if (currentPoints < 0) {
+////                throw new IllegalArgumentException("Current points cannot be negative");
+////            }
+////            if (checkEmptyTextFields()) {
+////                errorMsg.setTextFill(Color.RED);
+////                errorMsg.setText("Please fill all the fields.");
+////            } else if (isDuplicateDriver()) {
+////                errorMsg.setTextFill(Color.RED);
+////                errorMsg.setText("The driver already in the program");
+////                clearTextFields(event);
+////            } else {
+////                errorMsg.setTextFill(Color.GREEN);
+////                errorMsg.setText("You Successfully added a driver.");
+////                Driver newDriver = new Driver(fullNameField.getText(), age, carModelField.getText(), teamNameField.getText(), currentPoints);
+////                DriverList.driverList.add(newDriver);
+////                ObservableList<Driver> drivers = FXCollections.observableArrayList(new DriverList().sortByScore());
+////                // Set the ObservableList as the items for the TableView
+////                driversTable.setItems(drivers);
+////                driversTable.refresh();
+////                clearTextFields(event);
+////            }
+////        } catch (NumberFormatException e) {
+////            errorMsg.setTextFill(Color.RED);
+////            errorMsg.setText("Please enter a valid number for age and current points.");
+////        } catch (IllegalArgumentException e) {
+////            errorMsg.setTextFill(Color.RED);
+////            errorMsg.setText(e.getMessage());
+////        }
+//
+//        //meekata yata thiyena eka hari eka
+//
+//        try {
+//            int age = Integer.parseInt(ageField.getText());
+//            if (age < 18 || age > 50) {
+//                throw new Exception("Age must be between 18 and 50");
+//            }
+//        } catch (NumberFormatException e) {
+//            errorMsg.setTextFill(Color.RED);
+//            errorMsg.setText("Please enter a valid age");
+//            return;
+//        } catch (Exception e) {
+//            errorMsg.setTextFill(Color.RED);
+//            errorMsg.setText(e.getMessage());
+//            return;
+//        }
+//        try {
+//            int points = Integer.parseInt(currentPointsField.getText());
+//            if (points < 0) {
+//                throw new Exception("Points cannot be negative");
+//            }
+//        } catch (NumberFormatException e) {
+//            errorMsg.setTextFill(Color.RED);
+//            errorMsg.setText("Please enter a valid points");
+//            return;
+//        } catch (Exception e) {
+//            errorMsg.setTextFill(Color.RED);
+//            errorMsg.setText(e.getMessage());
+//            return;
+//        }
+//        if (checkEmptyTextFields()){
+//            errorMsg.setTextFill(Color.RED);
+//            errorMsg.setText("Please fill all the fields.");
+//        }else if (isDuplicateDriver()) {
+//            errorMsg.setTextFill(Color.RED);
+//            errorMsg.setText("The driver already in the program");
+//            clearTextFields(event);
+//        } else {
+//            errorMsg.setTextFill(Color.GREEN);
+//            errorMsg.setText("You Successfully added a driver.");
+//            Driver newDriver = new Driver(fullNameField.getText(),parseInt(ageField.getText()),carModelField.getText(),teamNameField.getText(),parseInt(currentPointsField.getText()));
+//            DriverList.driverList.add(newDriver);
+//            ObservableList<Driver> drivers = FXCollections.observableArrayList(new DriverList().sortByScore());
+//            // Set the ObservableList as the items for the TableView
+//            driversTable.setItems(drivers);
+//            driversTable.refresh();
+//            clearTextFields(event);
+//        }
+//    }
     @FXML
     void addDriver(MouseEvent event) {
-        Driver newDriver = new Driver(fullNameField.getText(),parseInt(ageField.getText()),carModelField.getText(), teamNameField.getText(),parseInt(currentPointsField.getText()));
-
-        if (checkEmptyTextFields()){
-            errorMsg.setTextFill(Color.RED);
-            errorMsg.setText("Please fill all the fields.");
-        }else{
+        try {
+            if (checkEmptyTextFields()) {
+                throw new Exception("Please fill all the fields.");
+            }
+            if (isDuplicateDriver()) {
+                throw new Exception("The driver is already in the program.");
+            }
+            int age = parseInt(ageField.getText());
+            if (age < 18 || age > 50) {
+                throw new Exception("Age must be between 18 and 50.");
+            }
+            int currentPoints = parseInt(currentPointsField.getText());
+            if (currentPoints < 0) {
+                throw new Exception("Current points cannot be negative.");
+            }
             errorMsg.setTextFill(Color.GREEN);
             errorMsg.setText("You Successfully added a driver.");
-            driversTable.getItems().add(newDriver);
+            Driver newDriver = new Driver(fullNameField.getText(), age, carModelField.getText(), teamNameField.getText(), currentPoints);
+            DriverList.driverList.add(newDriver);
+            ObservableList<Driver> drivers = FXCollections.observableArrayList(new DriverList().sortByScore());
+            // Set the ObservableList as the items for the TableView
+            driversTable.setItems(drivers);
             driversTable.refresh();
             clearTextFields(event);
+        }catch (NumberFormatException exception){
+            errorMsg.setTextFill(Color.RED);
+            errorMsg.setText("Invalid input. Age and Current Points\nmust be Integers.");
+        } catch (Exception e) {
+            errorMsg.setTextFill(Color.RED);
+            errorMsg.setText(e.getMessage());
         }
+        fadeErrorMessage();
     }
 
     boolean checkEmptyTextFields(){
-        return (ageField.getText().isEmpty() || currentPointsField.getText().isEmpty()
-                || fullNameField.getText().isEmpty() || carModelField.getText().isEmpty() ||
+        return (ageField.getText().isEmpty() ||
+                currentPointsField.getText().isEmpty() ||
+                fullNameField.getText().isEmpty() ||
+                carModelField.getText().isEmpty() ||
                 teamNameField.getText().isEmpty());
     }
 
     @FXML
     void deleteDriver(MouseEvent event) {
-        int selectedRow = driversTable.getSelectionModel().getSelectedIndex();
-        driversTable.getItems().remove(selectedRow);
-        clearTextFields(event);
+        // get the selected item from the table view
+        Driver selectedItem = driversTable.getSelectionModel().getSelectedItem();
+        if (selectedItem != null) {
+            // get the cell data for each column of the selected item
+            String deleteName = fullName.getCellData(selectedItem);
+            int deleteAge = age.getCellData(selectedItem);
+            String deleteCar = carModel.getCellData(selectedItem);
+            String deleteTeam = teamName.getCellData(selectedItem);
+            int deletedPoints = currentPoints.getCellData(selectedItem);
+
+            for (int i = 0; i < DriverList.driverList.size() - 1; i++) {
+                if (Objects.equals(DriverList.driverList.get(i).fullName, deleteName) &&
+                        Objects.equals(DriverList.driverList.get(i).age, deleteAge) &&
+                        Objects.equals(DriverList.driverList.get(i).carModel, deleteCar) &&
+                        Objects.equals(DriverList.driverList.get(i).teamName, deleteTeam) &&
+                        Objects.equals(DriverList.driverList.get(i).currentPoints, deletedPoints)) {
+                    DriverList.driverList.remove(i);
+                    break;
+                }
+            }
+            ObservableList<Driver> drivers = FXCollections.observableArrayList(new DriverList().sortByScore());
+            // Set the ObservableList as the items for the TableView
+            driversTable.setItems(drivers);
+            clearTextFields(event);
+        }
     }
 
     @FXML
     void updateDriver(MouseEvent event) {
-        Driver newDriver = new Driver(fullNameField.getText(),parseInt(ageField.getText()), carModelField.getText(), teamNameField.getText(),parseInt(currentPointsField.getText()));
-        if (checkEmptyTextFields()){
+        try {
+            if (checkEmptyTextFields()) {
+                throw new Exception("Please fill all the fields.");
+            } else {
+                Driver updatedDriver = new Driver(fullNameField.getText(), parseInt(ageField.getText()), carModelField.getText(), teamNameField.getText(), parseInt(currentPointsField.getText()));
+                if (isDuplicateDriver()) {
+                    throw new Exception("The driver already exists in the program");
+                } else if (parseInt(ageField.getText()) < 18 || parseInt(ageField.getText()) > 50) {
+                    throw new Exception("Age must be between 18 and 50");
+                } else if (parseInt(currentPointsField.getText()) < 0) {
+                    throw new Exception("Current points cannot be negative");
+                }
+                DriverList.driverList.add(updatedDriver);
+                deleteDriver(event);
+                driversTable.refresh();
+                errorMsg.setTextFill(Color.GREEN);
+                errorMsg.setText("You Successfully updated a driver's detail.");
+            }
+        }catch (NumberFormatException exception){
             errorMsg.setTextFill(Color.RED);
-            errorMsg.setText("Please fill all the fields.");
-        }else {
-            errorMsg.setTextFill(Color.GREEN);
-            errorMsg.setText("You Successfully updated a driver's detail.");
-            driversTable.getItems().add(newDriver);
-            deleteDriver(event);
-            driversTable.refresh();
+            errorMsg.setText("Invalid input. Age and Current Points\nmust be Integers.");
+        } catch (Exception e) {
+            errorMsg.setTextFill(Color.RED);
+            errorMsg.setText(e.getMessage());
         }
+        fadeErrorMessage();
+//        if (checkEmptyTextFields()){
+//            errorMsg.setTextFill(Color.RED);
+//            errorMsg.setText("Please fill all the fields.");
+//        }else {
+//            errorMsg.setTextFill(Color.GREEN);
+//            errorMsg.setText("You Successfully updated a driver's detail.");
+//            Driver updatedDriver = new Driver(fullNameField.getText(),parseInt(ageField.getText()), carModelField.getText(), teamNameField.getText(),parseInt(currentPointsField.getText()));
+//            DriverList.driverList.add(updatedDriver);
+//            deleteDriver(event);
+//            driversTable.refresh();
+//        }
     }
 
     @FXML
@@ -194,16 +330,9 @@ public class DriverPageController implements Initializable{
 
     @FXML
     void searchingData(MouseEvent event) {
-
-//        DriverList list = new DriverList();
-//        List<Driver> filteredList = list.searchByName(searchField.getText());
-//        ObservableList<Driver> drivers = FXCollections.observableArrayList(filteredList);
-        //driversTable.setItems(drivers);
-
         ObservableList<Driver> filteredData = FXCollections.observableArrayList();
         ObservableList<Driver> originalData = driversTable.getItems();
         driversTable.setItems(filteredData);
-
 
         searchField.textProperty().addListener((observable, oldValue, newValue) -> {
             filteredData.clear();
@@ -214,33 +343,6 @@ public class DriverPageController implements Initializable{
                 }
             }
         });
-
-
-
-//        FilteredList <Driver> filteredData = new FilteredList<>(drivers, p -> true); //Pass the data to a filtered list
-//        searchField.textProperty().addListener((observable, oldValue, newValue) -> {
-//            filteredData.setPredicate(driver -> {
-//                if (newValue == null || newValue.isEmpty()) {
-//                    return true;
-//                }
-//
-//                String lowerCaseFilter = newValue.toLowerCase();
-//
-//                if (driver.getFullName().toLowerCase().contains(lowerCaseFilter)) {
-//                    return true;
-//                } else if (driver.getCarModel().toLowerCase().contains(lowerCaseFilter)) {
-//                    return true;
-//                } else if (driver.getTeamName().toLowerCase().contains(lowerCaseFilter)) {
-//                    return true;
-//                }
-//                return false;
-//            });
-//        });
-
-//        SortedList<Driver> sortedData = new SortedList<>(filteredData);
-//        sortedData.comparatorProperty().bind(driversTable.comparatorProperty());
-//        ObservableList<Driver> observableFilteredData = FXCollections.observableList(filteredData);
-
         driversTable.setItems(filteredData);
     }
 
@@ -248,14 +350,43 @@ public class DriverPageController implements Initializable{
         if (newValue == null || newValue.isEmpty()) {
             return true;
         }
-
         String lowerCaseFilter = newValue.toLowerCase();
-
         if (data.getFullName().toLowerCase().contains(lowerCaseFilter)) {
             return true;
         }
         return false;
     }
 
+    @FXML
+    void retrieveData(MouseEvent event) {
+        FileHandler fileHandler = new FileHandler();
+        fileHandler.loadDriversFromCSV();
 
+        ObservableList<Driver> drivers = FXCollections.observableArrayList(new DriverList().sortByScore());
+
+        // Set the ObservableList as the items for the TableView
+        driversTable.setItems(drivers);
+    }
+
+    private boolean isDuplicateDriver(){
+        boolean isFound = false;
+        for (int i = 0; i < DriverList.driverList.size()-1; i++) {
+            if (Objects.equals(DriverList.driverList.get(i).fullName, fullNameField.getText()) &&
+                    Objects.equals(DriverList.driverList.get(i).age, parseInt(ageField.getText())) &&
+                    Objects.equals(DriverList.driverList.get(i).carModel, carModelField.getText()) &&
+                    Objects.equals(DriverList.driverList.get(i).teamName, teamNameField.getText()) &&
+                    Objects.equals(DriverList.driverList.get(i).currentPoints, parseInt(currentPointsField.getText()))) {
+                isFound = true;
+                break;
+            }
+        }
+        return isFound;
+    }
+    private void fadeErrorMessage(){
+        FadeTransition fadeTransition = new FadeTransition(Duration.seconds(5), errorMsg);
+        fadeTransition.setFromValue(1);
+        fadeTransition.setToValue(0.0);
+        fadeTransition.setCycleCount(1);
+        fadeTransition.play();
+    }
 }

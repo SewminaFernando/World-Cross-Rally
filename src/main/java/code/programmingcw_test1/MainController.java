@@ -26,24 +26,24 @@ public class MainController {
 
     @FXML
     void goToMenu(MouseEvent event) throws IOException {
-        // Create the confirmation dialog
-        Alert alert = new Alert(AlertType.CONFIRMATION);
-        alert.setTitle("Data Retrieving");
-        alert.setHeaderText("Do you want to retrieve previous data?");
-        alert.setContentText("You can retrieve data about drivers and previous races");
-
-        // Add OK and Cancel buttons
-        ButtonType buttonTypeOK = new ButtonType("YES", ButtonBar.ButtonData.OK_DONE);
-        ButtonType buttonTypeCancel = new ButtonType("NO", ButtonBar.ButtonData.CANCEL_CLOSE);
-        alert.getButtonTypes().setAll(buttonTypeOK, buttonTypeCancel);
-
-        // Show the dialog and wait for a response
-        Optional<ButtonType> result = alert.showAndWait();
-        if (result.get() == buttonTypeOK){
-            System.out.println("Ela");
-        } else {
-            System.out.println("Bla");
-        }
+//        // Create the confirmation dialog
+//        Alert alert = new Alert(AlertType.CONFIRMATION);
+//        alert.setTitle("Data Retrieving");
+//        alert.setHeaderText("Do you want to retrieve previous data?");
+//        alert.setContentText("You can retrieve data about drivers and previous races");
+//
+//        // Add OK and Cancel buttons
+//        ButtonType buttonTypeOK = new ButtonType("YES", ButtonBar.ButtonData.OK_DONE);
+//        ButtonType buttonTypeCancel = new ButtonType("NO", ButtonBar.ButtonData.CANCEL_CLOSE);
+//        alert.getButtonTypes().setAll(buttonTypeOK, buttonTypeCancel);
+//
+//        // Show the dialog and wait for a response
+//        Optional<ButtonType> result = alert.showAndWait();
+//        if (result.get() == buttonTypeOK){
+//            System.out.println("Ela");
+//        } else {
+//            System.out.println("Bla");
+//        }
 
         navigateToMenu(event);
     }

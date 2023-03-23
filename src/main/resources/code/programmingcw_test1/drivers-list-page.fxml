@@ -81,14 +81,14 @@
                 </HBox>
             </children>
         </AnchorPane>
-        <TableView layoutX="20.0" layoutY="141.0" prefHeight="670.0" prefWidth="1169.0" styleClass="column-header" stylesheets="@tableStyle.css">
+        <TableView fx:id="standingTable" layoutX="20.0" layoutY="141.0" prefHeight="670.0" prefWidth="1169.0" styleClass="column-header-background" stylesheets="@tableStyle.css">
             <columns>
-            <TableColumn prefWidth="90.0" text="Rank" />
-                <TableColumn prefWidth="349.6000633239746" text="Name" />
-                <TableColumn prefWidth="57.59998321533203" text="Age" />
-                <TableColumn prefWidth="214.53329467773438" text="Car Model" />
-                <TableColumn prefWidth="215.066650390625" text="Team Name" />
-                <TableColumn prefWidth="214.46670532226562" text="Current Points" />
+            <TableColumn fx:id="rank" prefWidth="90.0" text="Rank" />
+                <TableColumn fx:id="fullName" prefWidth="335.6000633239746" text="Name" />
+                <TableColumn fx:id="age" prefWidth="82.59998321533203" text="Age" />
+                <TableColumn fx:id="carModel" prefWidth="260.5332946777344" text="Car Model" />
+                <TableColumn fx:id="teamName" prefWidth="232.066650390625" text="Team Name" />
+                <TableColumn fx:id="currentPoints" prefWidth="170.46670532226562" text="Current Points" />
             </columns>
         </TableView>
     </children>

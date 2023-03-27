@@ -41,19 +41,6 @@
                         <Insets left="10.0" right="10.0" top="10.0" />
                      </HBox.margin>
                   </Button>
-                  <Button mnemonicParsing="false" prefHeight="87.0" style="-fx-background-color: #0b0c10; -fx-background-radius: 15 15 0 0;" text="EDIT DRIVERS" textFill="#66fcf1">
-                     <font>
-                        <Font name="System Bold" size="16.0" />
-                     </font>
-                     <cursor>
-                        <Cursor fx:constant="HAND" />
-                     </cursor>
-                  </Button>
-                  <Button mnemonicParsing="false" onMouseClicked="#viewDrivers" prefHeight="87.0" styleClass="navbar-buttons" stylesheets="@main.css" text="VIEW DRIVERS">
-                     <cursor>
-                        <Cursor fx:constant="HAND" />
-                     </cursor>
-                  </Button>
                </children>
             </HBox>
             <HBox alignment="TOP_RIGHT" layoutX="953.0" prefHeight="59.0" prefWidth="245.0">

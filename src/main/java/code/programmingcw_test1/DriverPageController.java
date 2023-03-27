@@ -4,11 +4,7 @@ import javafx.animation.FadeTransition;
 import javafx.collections.FXCollections;
 import javafx.collections.ObservableList;
 import javafx.fxml.FXML;
-import javafx.fxml.FXMLLoader;
 import javafx.fxml.Initializable;
-import javafx.scene.Node;
-import javafx.scene.Parent;
-import javafx.scene.Scene;
 import javafx.scene.control.Label;
 import javafx.scene.control.TableColumn;
 import javafx.scene.control.TableView;
@@ -16,7 +12,6 @@ import javafx.scene.control.TextField;
 import javafx.scene.control.cell.PropertyValueFactory;
 import javafx.scene.input.MouseEvent;
 import javafx.scene.paint.Color;
-import javafx.stage.Stage;
 import javafx.util.Duration;
 
 
@@ -65,7 +60,7 @@ public class DriverPageController implements Initializable{
         teamName.setCellValueFactory(new PropertyValueFactory<>("teamName"));
         currentPoints.setCellValueFactory(new PropertyValueFactory<>("currentPoints"));
 
-        ObservableList<Driver> drivers = FXCollections.observableArrayList();
+        ObservableList<Driver> drivers = FXCollections.observableArrayList(DriverList.driverList);
         // Set the ObservableList as the items for the TableView
         driversTable.setItems(drivers);
 
@@ -86,93 +81,6 @@ public class DriverPageController implements Initializable{
         });
     }
 
-//    @FXML
-//    void addDriver(MouseEvent event) {
-//
-////        try {
-////            int age = Integer.parseInt(ageField.getText());
-////            if (age < 18 || age > 50) {
-////                throw new IllegalArgumentException("Age must be between 18 and 50");
-////            }
-////            int currentPoints = Integer.parseInt(currentPointsField.getText());
-////            if (currentPoints < 0) {
-////                throw new IllegalArgumentException("Current points cannot be negative");
-////            }
-////            if (checkEmptyTextFields()) {
-////                errorMsg.setTextFill(Color.RED);
-////                errorMsg.setText("Please fill all the fields.");
-////            } else if (isDuplicateDriver()) {
-////                errorMsg.setTextFill(Color.RED);
-////                errorMsg.setText("The driver already in the program");
-////                clearTextFields(event);
-////            } else {
-////                errorMsg.setTextFill(Color.GREEN);
-////                errorMsg.setText("You Successfully added a driver.");
-////                Driver newDriver = new Driver(fullNameField.getText(), age, carModelField.getText(), teamNameField.getText(), currentPoints);
-////                DriverList.driverList.add(newDriver);
-////                ObservableList<Driver> drivers = FXCollections.observableArrayList(new DriverList().sortByScore());
-////                // Set the ObservableList as the items for the TableView
-////                driversTable.setItems(drivers);
-////                driversTable.refresh();
-////                clearTextFields(event);
-////            }
-////        } catch (NumberFormatException e) {
-////            errorMsg.setTextFill(Color.RED);
-////            errorMsg.setText("Please enter a valid number for age and current points.");
-////        } catch (IllegalArgumentException e) {
-////            errorMsg.setTextFill(Color.RED);
-////            errorMsg.setText(e.getMessage());
-////        }
-//
-//        //meekata yata thiyena eka hari eka
-//
-//        try {
-//            int age = Integer.parseInt(ageField.getText());
-//            if (age < 18 || age > 50) {
-//                throw new Exception("Age must be between 18 and 50");
-//            }
-//        } catch (NumberFormatException e) {
-//            errorMsg.setTextFill(Color.RED);
-//            errorMsg.setText("Please enter a valid age");
-//            return;
-//        } catch (Exception e) {
-//            errorMsg.setTextFill(Color.RED);
-//            errorMsg.setText(e.getMessage());
-//            return;
-//        }
-//        try {
-//            int points = Integer.parseInt(currentPointsField.getText());
-//            if (points < 0) {
-//                throw new Exception("Points cannot be negative");
-//            }
-//        } catch (NumberFormatException e) {
-//            errorMsg.setTextFill(Color.RED);
-//            errorMsg.setText("Please enter a valid points");
-//            return;
-//        } catch (Exception e) {
-//            errorMsg.setTextFill(Color.RED);
-//            errorMsg.setText(e.getMessage());
-//            return;
-//        }
-//        if (checkEmptyTextFields()){
-//            errorMsg.setTextFill(Color.RED);
-//            errorMsg.setText("Please fill all the fields.");
-//        }else if (isDuplicateDriver()) {
-//            errorMsg.setTextFill(Color.RED);
-//            errorMsg.setText("The driver already in the program");
-//            clearTextFields(event);
-//        } else {
-//            errorMsg.setTextFill(Color.GREEN);
-//            errorMsg.setText("You Successfully added a driver.");
-//            Driver newDriver = new Driver(fullNameField.getText(),parseInt(ageField.getText()),carModelField.getText(),teamNameField.getText(),parseInt(currentPointsField.getText()));
-//            DriverList.driverList.add(newDriver);
-//            ObservableList<Driver> drivers = FXCollections.observableArrayList(new DriverList().sortByScore());
-//            // Set the ObservableList as the items for the TableView
-//            driversTable.setItems(drivers);
-//            driversTable.refresh();
-//            clearTextFields(event);
-//        }
-//    }
     @FXML
     void addDriver(MouseEvent event) {
         try {
@@ -229,7 +137,7 @@ public class DriverPageController implements Initializable{
             String deleteTeam = teamName.getCellData(selectedItem);
             int deletedPoints = currentPoints.getCellData(selectedItem);
 
-            for (int i = 0; i < DriverList.driverList.size() - 1; i++) {
+            for (int i = 0; i < DriverList.driverList.size(); i++) {
                 if (Objects.equals(DriverList.driverList.get(i).fullName, deleteName) &&
                         Objects.equals(DriverList.driverList.get(i).age, deleteAge) &&
                         Objects.equals(DriverList.driverList.get(i).carModel, deleteCar) &&
@@ -274,17 +182,6 @@ public class DriverPageController implements Initializable{
             errorMsg.setText(e.getMessage());
         }
         fadeErrorMessage();
-//        if (checkEmptyTextFields()){
-//            errorMsg.setTextFill(Color.RED);
-//            errorMsg.setText("Please fill all the fields.");
-//        }else {
-//            errorMsg.setTextFill(Color.GREEN);
-//            errorMsg.setText("You Successfully updated a driver's detail.");
-//            Driver updatedDriver = new Driver(fullNameField.getText(),parseInt(ageField.getText()), carModelField.getText(), teamNameField.getText(),parseInt(currentPointsField.getText()));
-//            DriverList.driverList.add(updatedDriver);
-//            deleteDriver(event);
-//            driversTable.refresh();
-//        }
     }
 
     @FXML
@@ -319,14 +216,6 @@ public class DriverPageController implements Initializable{
     void backToMenu(MouseEvent event) throws IOException {
         new MainController().navigateToMenu(event);
     }
-
-    @FXML
-    void viewDrivers(MouseEvent event) throws IOException {
-        Stage stage = (Stage) ((Node) event.getSource()).getScene().getWindow();
-        Parent root = FXMLLoader.load(getClass().getResource("drivers-list-page.fxml"));
-        stage.setScene(new Scene(root, 1200, 832));
-    }
-
 
     @FXML
     void searchingData(MouseEvent event) {
@@ -370,7 +259,7 @@ public class DriverPageController implements Initializable{
 
     private boolean isDuplicateDriver(){
         boolean isFound = false;
-        for (int i = 0; i < DriverList.driverList.size()-1; i++) {
+        for (int i = 0; i < DriverList.driverList.size(); i++) {
             if (Objects.equals(DriverList.driverList.get(i).fullName, fullNameField.getText()) &&
                     Objects.equals(DriverList.driverList.get(i).age, parseInt(ageField.getText())) &&
                     Objects.equals(DriverList.driverList.get(i).carModel, carModelField.getText()) &&

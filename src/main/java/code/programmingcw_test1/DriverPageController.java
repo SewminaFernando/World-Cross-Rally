@@ -60,7 +60,7 @@ public class DriverPageController implements Initializable{
         teamName.setCellValueFactory(new PropertyValueFactory<>("teamName"));
         currentPoints.setCellValueFactory(new PropertyValueFactory<>("currentPoints"));
 
-        ObservableList<Driver> drivers = FXCollections.observableArrayList(DriverList.driverList);
+        ObservableList<Driver> drivers = FXCollections.observableArrayList(new DriverList().sortByScore());
         // Set the ObservableList as the items for the TableView
         driversTable.setItems(drivers);
 

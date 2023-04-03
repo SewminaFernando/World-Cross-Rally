@@ -25,7 +25,7 @@
             <Image url="@../../Images/World_Cross_Rally_Championship_2_edited.png" />
          </image>
       </ImageView>
-      <AnchorPane layoutY="-2.0" prefHeight="35.2" prefWidth="902.0" styleClass="background" stylesheets="@main.css" />
+      <AnchorPane layoutY="-2.0" prefHeight="35.2" prefWidth="902.0" styleClass="background" stylesheets="@../../CSSFiles/main.css" />
       <Text layoutX="350.0" layoutY="135.0" strokeType="OUTSIDE" strokeWidth="0.0" text="MENU">
          <font>
             <Font name="SansSerif Bold Italic" size="64.0" />
@@ -49,7 +49,7 @@
       </Text>
       <VBox alignment="CENTER" layoutX="39.0" layoutY="178.0" prefHeight="400.0" prefWidth="810.0" spacing="44.0">
          <children>
-            <Button mnemonicParsing="false" onMouseClicked="#goToDriversPage" prefHeight="152.0" prefWidth="726.0" styleClass="menu-button" stylesheets="@main.css">
+            <Button mnemonicParsing="false" onMouseClicked="#goToDriversPage" prefHeight="152.0" prefWidth="726.0" styleClass="menu-button" stylesheets="@../../CSSFiles/main.css">
                <graphic>
                   <HBox prefHeight="119.0" prefWidth="674.0">
                      <children>
@@ -89,7 +89,7 @@
                   <Cursor fx:constant="HAND" />
                </cursor>
             </Button>
-            <Button mnemonicParsing="false" onMouseClicked="#goToRandomRace" prefHeight="152.0" prefWidth="726.0" styleClass="menu-button" stylesheets="@main.css">
+            <Button mnemonicParsing="false" onMouseClicked="#goToRandomRace" prefHeight="152.0" prefWidth="726.0" styleClass="menu-button" stylesheets="@../../CSSFiles/main.css">
                <graphic>
                   <HBox prefHeight="119.0" prefWidth="674.0">
                      <children>
@@ -131,7 +131,7 @@
             </Button>
          </children>
       </VBox>
-      <Button layoutX="14.0" layoutY="44.0" mnemonicParsing="false" onMouseClicked="#backToMain" prefHeight="38.0" prefWidth="51.0" rotate="180.0" style="-fx-font-size: 20;" styleClass="get-started-button" stylesheets="@main.css" text="➔">
+      <Button layoutX="14.0" layoutY="44.0" mnemonicParsing="false" onMouseClicked="#backToMain" prefHeight="38.0" prefWidth="51.0" rotate="180.0" style="-fx-font-size: 20;" styleClass="get-started-button" stylesheets="@../../CSSFiles/main.css" text="➔">
          <cursor>
             <Cursor fx:constant="HAND" />
          </cursor>

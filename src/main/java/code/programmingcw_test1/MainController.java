@@ -26,6 +26,8 @@ public class MainController {
 
     @FXML
     void goToMenu(MouseEvent event) throws IOException {
+        FileHandler handler = new FileHandler();
+        handler.loadPlayersFromCSV();
 //        // Create the confirmation dialog
 //        Alert alert = new Alert(AlertType.CONFIRMATION);
 //        alert.setTitle("Data Retrieving");

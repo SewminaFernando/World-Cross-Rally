@@ -26,11 +26,11 @@
             <Image url="@../../Images/Car.E.png" />
          </image>
       </ImageView>
-      <AnchorPane prefHeight="25.0" prefWidth="900.0" styleClass="background" stylesheets="@main.css">
+      <AnchorPane prefHeight="25.0" prefWidth="900.0" styleClass="background" stylesheets="@../../CSSFiles/main.css">
          <children>
             <HBox alignment="CENTER_RIGHT" prefHeight="25.0" prefWidth="900.0" styleClass="background" AnchorPane.rightAnchor="0.0">
                <children>
-                  <Button alignment="CENTER_RIGHT" cancelButton="true" mnemonicParsing="false" onMouseClicked="#close" styleClass="close-button" stylesheets="@main.css" text="X" textFill="WHITE">
+                  <Button alignment="CENTER_RIGHT" cancelButton="true" mnemonicParsing="false" onMouseClicked="#close" styleClass="close-button" stylesheets="@../../CSSFiles/main.css" text="X" textFill="WHITE">
                      <cursor>
                         <Cursor fx:constant="HAND" />
                      </cursor>
@@ -50,7 +50,7 @@
             <Font name="Arial Rounded MT Bold" size="46.0" />
          </font>
       </Text>
-      <Button layoutX="380.0" layoutY="511.0" mnemonicParsing="false" onMouseClicked="#goToMenu" prefHeight="46.0" prefWidth="139.0" styleClass="get-started-button" stylesheets="@main.css" text="Get Started ➔">
+      <Button layoutX="380.0" layoutY="511.0" mnemonicParsing="false" onMouseClicked="#goToMenu" prefHeight="46.0" prefWidth="139.0" styleClass="get-started-button" stylesheets="@../../CSSFiles/main.css" text="Get Started ➔">
          <cursor>
             <Cursor fx:constant="HAND" />
          </cursor>

@@ -30,7 +30,7 @@ public class MenuController {
     void goToRandomRace(MouseEvent event) throws IOException {
         Stage stage = (Stage) ((Node) event.getSource()).getScene().getWindow();
         Parent root = FXMLLoader.load(getClass().getResource("simulate-random-race.fxml"));
-        stage.setScene(new Scene(root, 1200, 832));
+        stage.setScene(new Scene(root, 1200, 797));
     }
 
 }

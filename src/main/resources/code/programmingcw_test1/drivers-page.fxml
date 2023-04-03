@@ -26,7 +26,7 @@
          <children>
             <HBox prefHeight="59.0" prefWidth="538.0">
                <children>
-                  <Button mnemonicParsing="false" onMouseClicked="#backToMenu" prefHeight="38.0" prefWidth="51.0" rotate="180.0" style="-fx-font-size: 20;" styleClass="get-started-button" stylesheets="@main.css" text="➔">
+                  <Button mnemonicParsing="false" onMouseClicked="#backToMenu" prefHeight="38.0" prefWidth="51.0" rotate="180.0" style="-fx-font-size: 20;" styleClass="get-started-button" stylesheets="@../../CSSFiles/main.css" text="➔">
                      <cursor>
                         <Cursor fx:constant="HAND" />
                      </cursor>
@@ -92,7 +92,7 @@
             </Label>
          </children>
       </AnchorPane>
-      <TableView fx:id="driversTable" layoutX="21.0" layoutY="123.0" prefHeight="633.0" prefWidth="788.0" styleClass="column-header-background" stylesheets="@tableStyle.css">
+      <TableView fx:id="driversTable" layoutX="21.0" layoutY="123.0" prefHeight="633.0" prefWidth="788.0" styleClass="column-header-background" stylesheets="@../../CSSFiles/tableStyle.css">
         <columns>
           <TableColumn fx:id="fullName" prefWidth="289.6000633239746" text="Name" />
           <TableColumn fx:id="age" prefWidth="57.59998321533203" text="Age" />

@@ -3,6 +3,11 @@
 <?import javafx.geometry.Insets?>
 <?import javafx.scene.Cursor?>
 <?import javafx.scene.control.Button?>
+<?import javafx.scene.control.DatePicker?>
+<?import javafx.scene.control.Label?>
+<?import javafx.scene.control.TableColumn?>
+<?import javafx.scene.control.TableView?>
+<?import javafx.scene.control.TextField?>
 <?import javafx.scene.control.Tooltip?>
 <?import javafx.scene.image.Image?>
 <?import javafx.scene.image.ImageView?>
@@ -12,19 +17,18 @@
 <?import javafx.scene.text.Font?>
 <?import javafx.scene.text.Text?>
 
-<AnchorPane prefHeight="832.0" prefWidth="1200.0" xmlns="http://javafx.com/javafx/19" xmlns:fx="http://javafx.com/fxml/1" fx:controller="code.programmingcw_test1.SimulateRandomRaceController">
+<AnchorPane maxHeight="800.0" maxWidth="1200.0" prefHeight="797.0" prefWidth="1200.0" xmlns="http://javafx.com/javafx/19" xmlns:fx="http://javafx.com/fxml/1" fx:controller="code.programmingcw_test1.SimulateRandomRaceController">
     <children>
-        <Pane layoutY="-1.0" prefHeight="36.0" prefWidth="1200.0" styleClass="background" stylesheets="@main.css" AnchorPane.rightAnchor="0.0" />
-        <ImageView fitHeight="795.0" fitWidth="1200.0" layoutY="38.0">
+        <ImageView fitHeight="795.0" fitWidth="1200.0" layoutY="6.0">
             <image>
                 <Image url="@../../Images/Car-race-edited.png" />
             </image>
         </ImageView>
-        <AnchorPane layoutY="34.0" prefHeight="51.0" prefWidth="1200.0" style="-fx-background-color: #1f2833;">
+        <AnchorPane layoutY="-1.0" prefHeight="51.0" prefWidth="1200.0" style="-fx-background-color: #1f2833;">
             <children>
                 <HBox prefHeight="59.0" prefWidth="538.0">
                     <children>
-                        <Button mnemonicParsing="false" onMouseClicked="#backToMenu" prefHeight="38.0" prefWidth="51.0" rotate="180.0" style="-fx-font-size: 20;" styleClass="get-started-button" stylesheets="@main.css" text="➔">
+                        <Button mnemonicParsing="false" onMouseClicked="#backToMenu" prefHeight="38.0" prefWidth="51.0" rotate="180.0" style="-fx-font-size: 20;" styleClass="get-started-button" stylesheets="@../../CSSFiles/main.css" text="➔">
                             <cursor>
                                 <Cursor fx:constant="HAND" />
                             </cursor>
@@ -47,7 +51,7 @@
                                 <Cursor fx:constant="HAND" />
                             </cursor>
                         </Button>
-                        <Button mnemonicParsing="false" onMouseClicked="#viewPastRaces" prefHeight="87.0" styleClass="navbar-buttons" stylesheets="@main.css" text="VIEW PAST RACES" textFill="#66fcf1">
+                        <Button mnemonicParsing="false" onMouseClicked="#viewPastRaces" prefHeight="87.0" styleClass="navbar-buttons" stylesheets="@../../CSSFiles/main.css" text="VIEW PAST RACES" textFill="#66fcf1">
                             <cursor>
                                 <Cursor fx:constant="HAND" />
                             </cursor>
@@ -79,5 +83,43 @@
                 </HBox>
             </children>
         </AnchorPane>
+      <TableView fx:id="standingTable" layoutX="26.0" layoutY="468.0" prefHeight="293.0" prefWidth="1150.0" styleClass="column-header-background" stylesheets="@../../CSSFiles/tableStyle.css">
+        <columns>
+          <TableColumn fx:id="dateColumn" prefWidth="165.3333625793457" text="Date" />
+          <TableColumn fx:id="locationColumn" prefWidth="182.933349609375" text="Location" />
+            <TableColumn fx:id="rankColumn" prefWidth="105.86663818359375" text="Rank" />
+            <TableColumn fx:id="nameColumn" prefWidth="381.8666687011719" text="Name" />
+            <TableColumn fx:id="teamColumn" prefWidth="181.8665771484375" text="Team" />
+            <TableColumn fx:id="pointsColumn" prefWidth="133.60009765625" text="Points" />
+        </columns>
+      </TableView>
+      <Pane layoutX="110.0" layoutY="78.0" prefHeight="307.0" prefWidth="980.0" style="-fx-background-color: rgba(255,255,255,0.25); -fx-background-radius: 25px;">
+         <children>
+            <Text fx:id="noOfDrivers" fill="#1cb7ff" layoutX="591.0" layoutY="33.0" strokeType="OUTSIDE" strokeWidth="0.0">
+               <font>
+                  <Font size="25.0" />
+               </font>
+            </Text>
+            <Text layoutX="105.0" layoutY="84.0" strokeType="OUTSIDE" strokeWidth="0.0" text="How many Drivers do you want to participate :">
+               <font>
+                  <Font size="21.0" />
+               </font>
+            </Text>
+            <DatePicker fx:id="date" layoutX="550.0" layoutY="105.0" />
+            <TextField fx:id="numberOfCandidates" layoutX="550.0" layoutY="63.0" />
+            <Text layoutX="479.0" layoutY="122.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Date :">
+               <font>
+                  <Font size="21.0" />
+               </font>
+            </Text>
+            <Button layoutX="427.0" layoutY="252.0" mnemonicParsing="false" onMouseClicked="#generateRandomRace" text="Generate a Random Race" />
+            <Label fx:id="displayMsg" alignment="CENTER" layoutX="248.0" layoutY="162.0" prefHeight="72.0" prefWidth="516.0" textFill="RED" />
+         </children>
+      </Pane>
+      <Text fill="WHITE" layoutX="371.0" layoutY="109.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Number of Drivers in the program :">
+         <font>
+            <Font size="20.0" />
+         </font>
+      </Text>
     </children>
 </AnchorPane>

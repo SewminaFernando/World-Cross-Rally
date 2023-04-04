@@ -8,6 +8,7 @@
 <?import javafx.scene.control.TableView?>
 <?import javafx.scene.control.TextField?>
 <?import javafx.scene.control.Tooltip?>
+<?import javafx.scene.effect.Bloom?>
 <?import javafx.scene.image.Image?>
 <?import javafx.scene.image.ImageView?>
 <?import javafx.scene.layout.AnchorPane?>
@@ -15,9 +16,9 @@
 <?import javafx.scene.text.Font?>
 <?import javafx.scene.text.Text?>
 
-<AnchorPane prefHeight="770.0" prefWidth="1200.0" xmlns="http://javafx.com/javafx/19" xmlns:fx="http://javafx.com/fxml/1" fx:controller="code.programmingcw_test1.DriverPageController">
+<AnchorPane prefHeight="797.0" prefWidth="1200.0" xmlns="http://javafx.com/javafx/19" xmlns:fx="http://javafx.com/fxml/1" fx:controller="code.programmingcw_test1.DriverPageController">
    <children>
-      <ImageView fitHeight="780.0" fitWidth="1200.0">
+      <ImageView fitHeight="799.0" fitWidth="1200.0">
          <image>
             <Image url="@../../Images/background-image-3_edited.png" />
          </image>
@@ -65,40 +66,95 @@
             </HBox>
          </children>
       </AnchorPane>
-      <AnchorPane layoutX="824.0" layoutY="58.0" prefHeight="722.0" prefWidth="376.0" style="-fx-background-color: rgba(11,12,16,0.75);">
+      <AnchorPane layoutX="824.0" layoutY="58.0" prefHeight="741.0" prefWidth="376.0" style="-fx-background-color: rgba(11,12,16,0.75);">
          <children>
-            <TextField fx:id="searchField" layoutX="74.0" layoutY="25.0" onMouseClicked="#searchingData" prefHeight="26.0" prefWidth="182.0" />
-            <Button layoutX="265.0" layoutY="26.0" mnemonicParsing="false" text="Search" />
-            <Label layoutX="62.0" layoutY="84.0" text="Full Name" textFill="#fffbfb" />
-            <Label layoutX="62.0" layoutY="142.0" text="Age" textFill="#fffbfb" />
-            <Label layoutX="61.0" layoutY="200.0" text="Car Model" textFill="#fffbfb" />
-            <Label layoutX="58.0" layoutY="263.0" text="Team Name" textFill="#fffbfb" />
-            <Label layoutX="59.0" layoutY="317.0" text="Current Points" textFill="#fffbfb" />
-            <TextField fx:id="fullNameField" layoutX="90.0" layoutY="103.0" prefHeight="26.0" prefWidth="216.0" />
-            <TextField fx:id="ageField" layoutX="90.0" layoutY="161.0" prefHeight="26.0" prefWidth="216.0" />
-            <TextField fx:id="carModelField" layoutX="90.0" layoutY="221.0" prefHeight="26.0" prefWidth="217.0" />
-            <TextField fx:id="teamNameField" layoutX="90.0" layoutY="281.0" prefHeight="26.0" prefWidth="218.0" />
-            <TextField fx:id="currentPointsField" layoutX="91.0" layoutY="341.0" prefHeight="26.0" prefWidth="216.0" />
-            <Button layoutX="168.0" layoutY="475.0" mnemonicParsing="false" onMouseClicked="#addDriver" text="Add" />
-            <Button layoutX="161.0" layoutY="523.0" mnemonicParsing="false" onMouseClicked="#deleteDriver" text="Delete" />
-            <Button layoutX="160.0" layoutY="569.0" mnemonicParsing="false" onMouseClicked="#updateDriver" text="Update" />
-            <Button layoutX="167.0" layoutY="619.0" mnemonicParsing="false" onMouseClicked="#clearTextFields" text="Clear" />
-            <Button layoutX="31.0" layoutY="688.0" mnemonicParsing="false" onMouseClicked="#saveData" text="Save" />
-            <Button layoutX="283.0" layoutY="688.0" mnemonicParsing="false" onMouseClicked="#retrieveData" text="Retrieve" />
-            <Label fx:id="errorMsg" alignment="CENTER" contentDisplay="CENTER" layoutX="53.0" layoutY="402.0" prefHeight="43.0" prefWidth="282.0" textFill="RED">
+            <TextField fx:id="searchField" layoutX="74.0" layoutY="25.0" onMouseClicked="#searchingData" prefHeight="26.0" prefWidth="182.0" styleClass="text-field" stylesheets="@../../CSSFiles/main.css" />
+            <Label cache="true" layoutX="62.0" layoutY="81.0" text="Full Name" textFill="#fffbfb">
+               <font>
+                  <Font size="15.0" />
+               </font>
+               <effect>
+                  <Bloom />
+               </effect></Label>
+            <Label layoutX="62.0" layoutY="138.0" text="Age" textFill="#fffbfb">
+               <font>
+                  <Font size="15.0" />
+               </font>
+               <effect>
+                  <Bloom />
+               </effect></Label>
+            <Label layoutX="61.0" layoutY="198.0" text="Car Model" textFill="#fffbfb">
+               <font>
+                  <Font size="15.0" />
+               </font>
+               <effect>
+                  <Bloom />
+               </effect></Label>
+            <Label layoutX="58.0" layoutY="258.0" text="Team Name" textFill="#fffbfb">
+               <font>
+                  <Font size="15.0" />
+               </font>
+               <effect>
+                  <Bloom />
+               </effect></Label>
+            <Label layoutX="59.0" layoutY="316.0" text="Current Points" textFill="#fffbfb">
+               <font>
+                  <Font size="15.0" />
+               </font>
+               <effect>
+                  <Bloom />
+               </effect></Label>
+            <TextField fx:id="fullNameField" layoutX="90.0" layoutY="103.0" prefHeight="26.0" prefWidth="216.0" stylesheets="@../../CSSFiles/main.css" />
+            <TextField fx:id="ageField" layoutX="89.0" layoutY="161.0" prefHeight="26.0" prefWidth="216.0" stylesheets="@../../CSSFiles/main.css" />
+            <TextField fx:id="carModelField" layoutX="89.0" layoutY="221.0" prefHeight="26.0" prefWidth="217.0" stylesheets="@../../CSSFiles/main.css" />
+            <TextField fx:id="teamNameField" layoutX="89.0" layoutY="281.0" prefHeight="26.0" prefWidth="218.0" stylesheets="@../../CSSFiles/main.css" />
+            <TextField fx:id="currentPointsField" layoutX="90.0" layoutY="341.0" prefHeight="26.0" prefWidth="216.0" stylesheets="@../../CSSFiles/main.css" />
+            <Button layoutX="119.0" layoutY="467.0" mnemonicParsing="false" onMouseClicked="#addDriver" prefHeight="35.0" prefWidth="170.0" styleClass="driver-buttons" stylesheets="@../../CSSFiles/main.css" text="Add a Driver">
+               <cursor>
+                  <Cursor fx:constant="HAND" />
+               </cursor></Button>
+            <Button layoutX="119.0" layoutY="520.0" mnemonicParsing="false" onMouseClicked="#deleteDriver" prefHeight="35.0" prefWidth="170.0" styleClass="driver-buttons" stylesheets="@../../CSSFiles/main.css" text="Delete a Driver">
+               <cursor>
+                  <Cursor fx:constant="HAND" />
+               </cursor></Button>
+            <Button layoutX="119.0" layoutY="569.0" mnemonicParsing="false" onMouseClicked="#updateDriver" prefHeight="35.0" prefWidth="170.0" styleClass="driver-buttons" stylesheets="@../../CSSFiles/main.css" text="Update a Driver">
+               <cursor>
+                  <Cursor fx:constant="HAND" />
+               </cursor></Button>
+            <Button layoutX="119.0" layoutY="626.0" mnemonicParsing="false" onMouseClicked="#clearTextFields" prefHeight="35.0" prefWidth="170.0" styleClass="driver-buttons" stylesheets="@../../CSSFiles/main.css" text="Clear all Text Fields">
+               <cursor>
+                  <Cursor fx:constant="HAND" />
+               </cursor></Button>
+            <Button layoutX="5.0" layoutY="698.0" mnemonicParsing="false" onMouseClicked="#saveData" prefHeight="30.0" prefWidth="180.0" styleClass="navbar-buttons" stylesheets="@../../CSSFiles/main.css" text="Save Data">
+               <cursor>
+                  <Cursor fx:constant="HAND" />
+               </cursor></Button>
+            <Button layoutX="191.0" layoutY="698.0" mnemonicParsing="false" onMouseClicked="#retrieveData" prefHeight="30.0" prefWidth="180.0" styleClass="navbar-buttons" stylesheets="@../../CSSFiles/main.css" text="Retrieve Data">
+               <cursor>
+                  <Cursor fx:constant="HAND" />
+               </cursor></Button>
+            <Label fx:id="errorMsg" alignment="CENTER" contentDisplay="CENTER" layoutX="53.0" layoutY="400.0" prefHeight="43.0" prefWidth="282.0" textAlignment="CENTER" textFill="RED">
                <font>
                   <Font size="14.0" />
                </font>
+               <effect>
+                  <Bloom />
+               </effect>
             </Label>
+            <Text fill="#45a29e" layoutX="269.0" layoutY="45.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Search">
+               <font>
+                  <Font name="System Bold" size="17.0" />
+               </font>
+            </Text>
          </children>
       </AnchorPane>
-      <TableView fx:id="driversTable" layoutX="21.0" layoutY="123.0" prefHeight="633.0" prefWidth="788.0" styleClass="column-header-background" stylesheets="@../../CSSFiles/tableStyle.css">
+      <TableView fx:id="driversTable" fixedCellSize="0.0" layoutX="21.0" layoutY="123.0" prefHeight="634.0" prefWidth="783.0" styleClass="column-header-background" stylesheets="@../../CSSFiles/tableStyle.css">
         <columns>
-          <TableColumn fx:id="fullName" prefWidth="289.6000633239746" text="Name" />
-          <TableColumn fx:id="age" prefWidth="57.59998321533203" text="Age" />
-            <TableColumn fx:id="carModel" prefWidth="156.53329467773438" text="Car Model" />
-            <TableColumn fx:id="teamName" prefWidth="165.066650390625" text="Team Name" />
-            <TableColumn fx:id="currentPoints" prefWidth="115.46670532226562" text="Current Points" />
+          <TableColumn fx:id="fullName" prefWidth="289.6000633239746" sortable="false" text="Name" />
+          <TableColumn fx:id="age" prefWidth="57.59998321533203" sortable="false" text="Age" />
+            <TableColumn fx:id="carModel" prefWidth="156.53329467773438" sortable="false" text="Car Model" />
+            <TableColumn fx:id="teamName" prefWidth="165.066650390625" sortable="false" text="Team Name" />
+            <TableColumn fx:id="currentPoints" prefWidth="112.00004882812505" sortable="false" text="Current Points" />
         </columns>
       </TableView>
       <Text fill="#66fcf1" layoutX="356.0" layoutY="107.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Standing Table">

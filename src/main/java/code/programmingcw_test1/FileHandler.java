@@ -1,14 +1,11 @@
 package code.programmingcw_test1;
 
-import java.io.BufferedReader;
-import java.io.FileWriter;
-import java.io.IOException;
-import java.io.Writer;
+import java.io.*;
 import java.time.LocalDate;
 
 public class FileHandler {
 
-    public void loadDriversFromCSV(){
+    public static void loadDriversFromCSV(){
         DriverList.driverList.clear();
 
         String fname,carModel,teamName;
@@ -30,12 +27,12 @@ public class FileHandler {
                 DriverList.driverList.add(driver);
             }
             reader.close();
-        } catch (Exception e) {
-            e.printStackTrace();
+        } catch (IOException e) {
+            System.out.println("Error Reading File\n" + e.getMessage());
         }
     }
 
-    public void loadPlayersFromCSV(){
+    public static void loadPlayersFromCSV(){
         String fullName, location, teamName;
         int currentPoints, rank, daysBetween;
         LocalDate date;
@@ -58,27 +55,45 @@ public class FileHandler {
                 PlayersList.player.add(player);
             }
             reader.close();
-        }catch (Exception e) {
-            e.printStackTrace();
+        } catch (IOException e) {
+            System.out.println("Error Reading File\n" + e.getMessage());
+        }
+    }
+    public static void saveDriversToCSV(){
+        Writer records = null;
+        try {
+            records = new FileWriter("src/main/java/csvfiles/Drivers.csv",false);
+            for (Driver driver :
+                    DriverList.driverList) {
+                records.write(driver.fullName + "," +
+                        driver.age + "," +
+                        driver.carModel + "," +
+                        driver.teamName + "," +
+                        driver.currentPoints + "\n");
+            }
+            records.close();
+        }catch (IOException e){
+            System.out.println("Error writing to file: " + e.getMessage());
         }
     }
 
-
-
-//    public void saveDriversToCSV(){
-//        Writer records = null;
-//        try {
-//            records = new FileWriter("src/main/java/csvfiles/Drivers.csv",false);
-//            for (int i = 0; i<driversTable.getItems().size(); i++){
-//                records.write(fullName.getCellData(i)+","+
-//                        age.getCellData(i)+","+
-//                        carModel.getCellData(i)+","+
-//                        teamName.getCellData(i)+","+
-//                        currentPoints.getCellData(i)+"\n");
-//            }
-//            records.close();
-//        }catch (IOException e){
-//            throw new RuntimeException(e);
-//        }
-//    }
+    public static void saveRaceDetailsToCSV(){
+        Writer records = null;
+        try {
+            records = new FileWriter("src/main/java/csvfiles/PastRandomRaces.csv",false);
+            for (Player player :
+                    PlayersList.player) {
+                records.write(player.date + "," +
+                        player.location + "," +
+                        player.rank + "," +
+                        player.fullName + "," +
+                        player.teamName + "," +
+                        player.currentPoints + "," +
+                        player.daysBetween +"\n");
+            }
+            records.close();
+        }catch (IOException e){
+            System.out.println("Error writing to file: " + e.getMessage());
+        }
+    }
 }

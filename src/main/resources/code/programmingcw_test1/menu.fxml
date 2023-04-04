@@ -18,17 +18,17 @@
 <?import javafx.scene.text.Font?>
 <?import javafx.scene.text.Text?>
 
-<AnchorPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="600.0" prefWidth="900.0" xmlns="http://javafx.com/javafx/19" xmlns:fx="http://javafx.com/fxml/1" fx:controller="code.programmingcw_test1.MenuController">
+<AnchorPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="797.0" prefWidth="1200.0" xmlns="http://javafx.com/javafx/19" xmlns:fx="http://javafx.com/fxml/1" fx:controller="code.programmingcw_test1.MenuController">
    <children>
-      <ImageView fitHeight="614.0" fitWidth="908.0" layoutX="-6.0" layoutY="-6.0">
+      <ImageView fitHeight="806.0" fitWidth="1208.0" layoutX="-6.0" layoutY="-6.0">
          <image>
             <Image url="@../../Images/World_Cross_Rally_Championship_2_edited.png" />
          </image>
       </ImageView>
       <AnchorPane layoutY="-2.0" prefHeight="35.2" prefWidth="902.0" styleClass="background" stylesheets="@../../CSSFiles/main.css" />
-      <Text layoutX="350.0" layoutY="135.0" strokeType="OUTSIDE" strokeWidth="0.0" text="MENU">
+      <Text layoutX="456.0" layoutY="182.0" strokeType="OUTSIDE" strokeWidth="0.0" text="MENU" wrappingWidth="276.97076416015625">
          <font>
-            <Font name="SansSerif Bold Italic" size="64.0" />
+            <Font name="SansSerif Bold Italic" size="90.0" />
          </font>
          <fill>
             <LinearGradient endX="0.06439391049471765" endY="0.011363667069059336" startY="1.0">
@@ -47,13 +47,13 @@
             </LinearGradient>
          </fill>
       </Text>
-      <VBox alignment="CENTER" layoutX="39.0" layoutY="178.0" prefHeight="400.0" prefWidth="810.0" spacing="44.0">
+      <VBox alignment="CENTER" layoutX="39.0" layoutY="213.0" prefHeight="563.0" prefWidth="1102.0" spacing="44.0">
          <children>
-            <Button mnemonicParsing="false" onMouseClicked="#goToDriversPage" prefHeight="152.0" prefWidth="726.0" styleClass="menu-button" stylesheets="@../../CSSFiles/main.css">
+            <Button mnemonicParsing="false" onMouseClicked="#goToDriversPage" prefHeight="200.0" prefWidth="820.0" styleClass="menu-button" stylesheets="@../../CSSFiles/main.css">
                <graphic>
-                  <HBox prefHeight="119.0" prefWidth="674.0">
+                  <HBox prefHeight="168.0" prefWidth="722.0">
                      <children>
-                        <ImageView fitHeight="208.0" fitWidth="147.0" pickOnBounds="true" preserveRatio="true">
+                        <ImageView fitHeight="175.0" fitWidth="180.0" pickOnBounds="true" preserveRatio="true">
                            <image>
                               <Image url="@../../Images/Driver.png" />
                            </image>
@@ -61,16 +61,16 @@
                               <Insets bottom="10.0" left="10.0" right="10.0" top="10.0" />
                            </HBox.margin>
                         </ImageView>
-                        <Pane prefHeight="156.0" prefWidth="502.0">
+                        <Pane prefHeight="168.0" prefWidth="528.0">
                            <children>
-                              <Text fill="#f0f7ff" layoutX="43.0" layoutY="37.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Drivers Details" wrappingWidth="215.04217529296875">
+                              <Text fill="#f0f7ff" layoutX="21.0" layoutY="41.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Drivers Details" wrappingWidth="333.44219970703125">
                                  <font>
-                                    <Font size="34.0" />
+                                    <Font size="40.0" />
                                  </font>
                               </Text>
-                              <Text fill="WHITE" layoutX="43.0" layoutY="61.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Users can view the drivers' details as a table with column Name, Age, Car Model, Team Name, and Current Points.Users are allowed to delete or update driver's details." wrappingWidth="366.13665771484375">
+                              <Text fill="WHITE" layoutX="21.0" layoutY="82.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Users can view the drivers' details as a table with column Name, Age, Car Model, Team Name, and Current Points.Users are allowed to delete or update driver's details." wrappingWidth="412.00323486328125">
                                  <font>
-                                    <Font size="14.0" />
+                                    <Font size="18.0" />
                                  </font>
                                  <effect>
                                     <DisplacementMap>
@@ -89,11 +89,11 @@
                   <Cursor fx:constant="HAND" />
                </cursor>
             </Button>
-            <Button mnemonicParsing="false" onMouseClicked="#goToRandomRace" prefHeight="152.0" prefWidth="726.0" styleClass="menu-button" stylesheets="@../../CSSFiles/main.css">
+            <Button mnemonicParsing="false" onMouseClicked="#goToRandomRace" prefHeight="200.0" prefWidth="820.0" styleClass="menu-button" stylesheets="@../../CSSFiles/main.css">
                <graphic>
                   <HBox prefHeight="119.0" prefWidth="674.0">
                      <children>
-                        <ImageView fitHeight="146.0" fitWidth="147.0">
+                        <ImageView fitHeight="175.0" fitWidth="180.0">
                            <image>
                               <Image url="@../../Images/RandomRace.png" />
                            </image>
@@ -103,14 +103,14 @@
                         </ImageView>
                         <Pane prefHeight="156.0" prefWidth="502.0">
                            <children>
-                              <Text fill="#f0f7ff" layoutX="42.0" layoutY="37.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Random Race" wrappingWidth="207.84222412109375">
+                              <Text fill="#f0f7ff" layoutX="18.0" layoutY="47.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Random Race" wrappingWidth="309.17555236816406">
                                  <font>
-                                    <Font size="34.0" />
+                                    <Font size="40.0" />
                                  </font>
                               </Text>
-                              <Text fill="WHITE" layoutX="42.0" layoutY="69.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Users can simulate the Rando Races and view the standings table according to ranks. User can view the all past Random Races." wrappingWidth="366.13665771484375">
+                              <Text fill="WHITE" layoutX="19.0" layoutY="93.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Users can simulate the Rando Races and view the standings table according to ranks. User can view the all past Random Races." wrappingWidth="366.13665771484375">
                                  <font>
-                                    <Font size="14.0" />
+                                    <Font size="18.0" />
                                  </font>
                                  <effect>
                                     <DisplacementMap>
@@ -131,7 +131,7 @@
             </Button>
          </children>
       </VBox>
-      <Button layoutX="14.0" layoutY="44.0" mnemonicParsing="false" onMouseClicked="#backToMain" prefHeight="38.0" prefWidth="51.0" rotate="180.0" style="-fx-font-size: 20;" styleClass="get-started-button" stylesheets="@../../CSSFiles/main.css" text="➔">
+      <Button layoutX="49.0" layoutY="86.0" mnemonicParsing="false" onMouseClicked="#backToMain" prefHeight="50.0" prefWidth="70.0" rotate="180.0" style="-fx-font-size: 25;" styleClass="get-started-button" stylesheets="@../../CSSFiles/main.css" text="➔">
          <cursor>
             <Cursor fx:constant="HAND" />
          </cursor>
@@ -142,8 +142,11 @@
                </font>
             </Tooltip>
          </tooltip>
+         <font>
+            <Font size="9.0" />
+         </font>
       </Button>
-      <ImageView fitHeight="158.0" fitWidth="155.0" layoutX="764.0" pickOnBounds="true" preserveRatio="true">
+      <ImageView fitHeight="241.0" fitWidth="248.0" layoutX="959.0" layoutY="-3.0" pickOnBounds="true" preserveRatio="true">
          <image>
             <Image url="@../../Images/Car.E.png" />
          </image>

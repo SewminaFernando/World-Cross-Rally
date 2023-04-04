@@ -9,6 +9,7 @@
 <?import javafx.scene.control.TableView?>
 <?import javafx.scene.control.TextField?>
 <?import javafx.scene.control.Tooltip?>
+<?import javafx.scene.effect.Bloom?>
 <?import javafx.scene.image.Image?>
 <?import javafx.scene.image.ImageView?>
 <?import javafx.scene.layout.AnchorPane?>
@@ -93,33 +94,47 @@
             <TableColumn fx:id="pointsColumn" prefWidth="133.60009765625" text="Points" />
         </columns>
       </TableView>
-      <Pane layoutX="110.0" layoutY="78.0" prefHeight="307.0" prefWidth="980.0" style="-fx-background-color: rgba(255,255,255,0.25); -fx-background-radius: 25px;">
+      <Pane layoutX="110.0" layoutY="78.0" prefHeight="307.0" prefWidth="980.0" style="-fx-background-color: rgba(11,12,16,0.75); -fx-background-radius: 25px;">
          <children>
-            <Text fx:id="noOfDrivers" fill="#1cb7ff" layoutX="591.0" layoutY="33.0" strokeType="OUTSIDE" strokeWidth="0.0">
-               <font>
-                  <Font size="25.0" />
-               </font>
-            </Text>
-            <Text layoutX="105.0" layoutY="84.0" strokeType="OUTSIDE" strokeWidth="0.0" text="How many Drivers do you want to participate :">
+            <Text fx:id="noOfDrivers" fill="#66fcf1" layoutX="591.0" layoutY="33.0" strokeType="OUTSIDE" strokeWidth="0.0">
                <font>
                   <Font size="21.0" />
                </font>
+               <effect>
+                  <Bloom />
+               </effect>
             </Text>
-            <DatePicker fx:id="date" layoutX="550.0" layoutY="105.0" />
-            <TextField fx:id="numberOfCandidates" layoutX="550.0" layoutY="63.0" />
-            <Text layoutX="479.0" layoutY="122.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Date :">
+            <Text fill="WHITE" layoutX="86.0" layoutY="84.0" strokeType="OUTSIDE" strokeWidth="0.0" text="How many Drivers do you want to participate :">
                <font>
-                  <Font size="21.0" />
+                  <Font name="System Bold Italic" size="20.0" />
                </font>
             </Text>
-            <Button layoutX="427.0" layoutY="252.0" mnemonicParsing="false" onMouseClicked="#generateRandomRace" text="Generate a Random Race" />
-            <Label fx:id="displayMsg" alignment="CENTER" layoutX="248.0" layoutY="162.0" prefHeight="72.0" prefWidth="516.0" textFill="RED" />
+            <DatePicker fx:id="date" layoutX="550.0" layoutY="105.0" stylesheets="@../../CSSFiles/main.css" />
+            <TextField fx:id="numberOfCandidates" layoutX="551.0" layoutY="65.0" styleClass="text-field" stylesheets="@../../CSSFiles/main.css" />
+            <Text fill="WHITE" layoutX="468.0" layoutY="122.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Date :">
+               <font>
+                  <Font name="System Bold Italic" size="20.0" />
+               </font>
+            </Text>
+            <Button layoutX="403.0" layoutY="256.0" mnemonicParsing="false" onMouseClicked="#generateRandomRace" styleClass="driver-buttons" stylesheets="@../../CSSFiles/main.css" text="Generate a Random Race" />
+            <Label fx:id="displayMsg" alignment="CENTER" contentDisplay="CENTER" layoutX="248.0" layoutY="162.0" prefHeight="72.0" prefWidth="516.0" textAlignment="CENTER" textFill="RED">
+               <font>
+                  <Font size="17.0" />
+               </font>
+               <effect>
+                  <Bloom />
+               </effect></Label>
+            <Button layoutX="106.0" layoutY="259.0" mnemonicParsing="false" onMouseClicked="#clearFields" styleClass="navbar-buttons" stylesheets="@../../CSSFiles/main.css" text="Clear Fields" />
+            <Button layoutX="808.0" layoutY="259.0" mnemonicParsing="false" onMouseClicked="#retrieveData" styleClass="navbar-buttons" stylesheets="@../../CSSFiles/main.css" text="Retrieve Data" />
          </children>
       </Pane>
       <Text fill="WHITE" layoutX="371.0" layoutY="109.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Number of Drivers in the program :">
          <font>
             <Font size="20.0" />
          </font>
+         <effect>
+            <Bloom />
+         </effect>
       </Text>
     </children>
 </AnchorPane>

@@ -5,10 +5,7 @@ import javafx.collections.FXCollections;
 import javafx.collections.ObservableList;
 import javafx.fxml.FXML;
 import javafx.fxml.Initializable;
-import javafx.scene.control.Label;
-import javafx.scene.control.TableColumn;
-import javafx.scene.control.TableView;
-import javafx.scene.control.TextField;
+import javafx.scene.control.*;
 import javafx.scene.control.cell.PropertyValueFactory;
 import javafx.scene.input.MouseEvent;
 import javafx.scene.paint.Color;
@@ -82,7 +79,7 @@ public class DriverPageController implements Initializable{
     }
 
     @FXML
-    void addDriver(MouseEvent event) {
+    private void addDriver(MouseEvent event) {
         try {
             if (checkEmptyTextFields()) {
                 throw new Exception("Please fill all the fields.");
@@ -105,7 +102,6 @@ public class DriverPageController implements Initializable{
             ObservableList<Driver> drivers = FXCollections.observableArrayList(new DriverList().sortByScore());
             // Set the ObservableList as the items for the TableView
             driversTable.setItems(drivers);
-            driversTable.refresh();
             clearTextFields(event);
         }catch (NumberFormatException exception){
             errorMsg.setTextFill(Color.RED);
@@ -117,7 +113,7 @@ public class DriverPageController implements Initializable{
         fadeErrorMessage();
     }
 
-    boolean checkEmptyTextFields(){
+    private boolean checkEmptyTextFields(){
         return (ageField.getText().isEmpty() ||
                 currentPointsField.getText().isEmpty() ||
                 fullNameField.getText().isEmpty() ||
@@ -126,7 +122,7 @@ public class DriverPageController implements Initializable{
     }
 
     @FXML
-    void deleteDriver(MouseEvent event) {
+    private void deleteDriver(MouseEvent event) {
         // get the selected item from the table view
         Driver selectedItem = driversTable.getSelectionModel().getSelectedItem();
         if (selectedItem != null) {
@@ -147,6 +143,9 @@ public class DriverPageController implements Initializable{
                     break;
                 }
             }
+            errorMsg.setTextFill(Color.GREEN);
+            errorMsg.setText("You Successfully added a driver.");
+            fadeErrorMessage();
             ObservableList<Driver> drivers = FXCollections.observableArrayList(new DriverList().sortByScore());
             // Set the ObservableList as the items for the TableView
             driversTable.setItems(drivers);
@@ -155,14 +154,14 @@ public class DriverPageController implements Initializable{
     }
 
     @FXML
-    void updateDriver(MouseEvent event) {
+    private void updateDriver(MouseEvent event) {
         try {
             if (checkEmptyTextFields()) {
                 throw new Exception("Please fill all the fields.");
             } else {
                 Driver updatedDriver = new Driver(fullNameField.getText(), parseInt(ageField.getText()), carModelField.getText(), teamNameField.getText(), parseInt(currentPointsField.getText()));
                 if (isDuplicateDriver()) {
-                    throw new Exception("The driver already exists in the program");
+                    throw new Exception("The driver is already in the program");
                 } else if (parseInt(ageField.getText()) < 18 || parseInt(ageField.getText()) > 50) {
                     throw new Exception("Age must be between 18 and 50");
                 } else if (parseInt(currentPointsField.getText()) < 0) {
@@ -185,7 +184,7 @@ public class DriverPageController implements Initializable{
     }
 
     @FXML
-    void clearTextFields(MouseEvent event) {
+    private void clearTextFields(MouseEvent event) {
         ageField.clear();
         currentPointsField.clear();
         carModelField.clear();
@@ -196,29 +195,38 @@ public class DriverPageController implements Initializable{
 
     //Save data to the csv file
     @FXML
-    void saveData(MouseEvent event) {
-        Writer records = null;
-        try {
-            records = new FileWriter("src/main/java/csvfiles/Drivers.csv",false);
-            for (int i = 0; i<driversTable.getItems().size(); i++){
-                records.write(fullName.getCellData(i)+","+
-                        age.getCellData(i)+","+
-                        carModel.getCellData(i)+","+
-                        teamName.getCellData(i)+","+
-                        currentPoints.getCellData(i)+"\n");
+    private void saveData(MouseEvent event) {
+        Alert alert = new Alert(Alert.AlertType.CONFIRMATION);
+
+        // Set the title and content text
+        alert.setTitle("Confirmation");
+        alert.setHeaderText("Do you want to save your changes?");
+        alert.setContentText("When saving data your CSV Files be overwritten.");
+
+        // Add the Save, Don't Save, and Cancel buttons
+        ButtonType yesButton = new ButtonType("Yes");
+        ButtonType cancelButton = new ButtonType("Cancel");
+        alert.getButtonTypes().setAll(yesButton, cancelButton);
+
+        // Show the alert and wait for the user to make a selection
+        alert.showAndWait().ifPresent(response -> {
+            if (response == yesButton) {
+                FileHandler.saveDriversToCSV();
+                errorMsg.setTextFill(Color.GREEN);
+                fadeErrorMessage();
+                errorMsg.setText("Saved Data to the File.");
+            } else if (response == cancelButton) {
+                event.consume();
             }
-            records.close();
-        }catch (IOException e){
-            throw new RuntimeException(e);
-        }
+        });
     }
     @FXML
-    void backToMenu(MouseEvent event) throws IOException {
+    private void backToMenu(MouseEvent event) throws IOException {
         new MainController().navigateToMenu(event);
     }
 
     @FXML
-    void searchingData(MouseEvent event) {
+    private void searchingData(MouseEvent event) {
         ObservableList<Driver> filteredData = FXCollections.observableArrayList();
         ObservableList<Driver> originalData = driversTable.getItems();
         driversTable.setItems(filteredData);
@@ -247,9 +255,11 @@ public class DriverPageController implements Initializable{
     }
 
     @FXML
-    void retrieveData(MouseEvent event) {
-        FileHandler fileHandler = new FileHandler();
-        fileHandler.loadDriversFromCSV();
+    private void retrieveData(MouseEvent event) {
+        FileHandler.loadDriversFromCSV();
+        errorMsg.setTextFill(Color.GREEN);
+        errorMsg.setText("Retrieved Data from Text File.");
+        fadeErrorMessage();
 
         ObservableList<Driver> drivers = FXCollections.observableArrayList(new DriverList().sortByScore());
 

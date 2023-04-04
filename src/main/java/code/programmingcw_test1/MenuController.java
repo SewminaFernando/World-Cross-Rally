@@ -13,21 +13,21 @@ import java.io.IOException;
 public class MenuController {
 
     @FXML
-    void backToMain(MouseEvent event) throws IOException {
+    private void backToMain(MouseEvent event) throws IOException {
         Stage stage = (Stage) ((Node) event.getSource()).getScene().getWindow();
         Parent root = FXMLLoader.load(getClass().getResource("main.fxml"));
-        stage.setScene(new Scene(root, 900, 600));
+        stage.setScene(new Scene(root, 1200, 797));
     }
 
     @FXML
-    void goToDriversPage(MouseEvent event) throws IOException {
+    private void goToDriversPage(MouseEvent event) throws IOException {
         Stage stage = (Stage) ((Node) event.getSource()).getScene().getWindow();
         Parent root = FXMLLoader.load(getClass().getResource("drivers-page.fxml"));
-        stage.setScene(new Scene(root, 1200, 780));
+        stage.setScene(new Scene(root, 1200, 797));
     }
 
     @FXML
-    void goToRandomRace(MouseEvent event) throws IOException {
+    private void goToRandomRace(MouseEvent event) throws IOException {
         Stage stage = (Stage) ((Node) event.getSource()).getScene().getWindow();
         Parent root = FXMLLoader.load(getClass().getResource("simulate-random-race.fxml"));
         stage.setScene(new Scene(root, 1200, 797));

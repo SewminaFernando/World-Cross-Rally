@@ -52,17 +52,17 @@ public class ViewPastRaces implements Initializable {
         locationColumn.setCellValueFactory(new PropertyValueFactory<>("location"));
         dateColumn.setCellValueFactory(new PropertyValueFactory<>("date"));
 
-        ObservableList<Player> players = FXCollections.observableArrayList(PlayersList.player);
+        ObservableList<Player> players = FXCollections.observableArrayList(new PlayersList().sortByDate());
         standingTable.setItems(players);
     }
 
     @FXML
-    void backToMenu(MouseEvent event) throws IOException {
+    private void backToMenu(MouseEvent event) throws IOException {
         new MainController().navigateToMenu(event);
     }
 
     @FXML
-    void simulateRandomRace(MouseEvent event) throws IOException {
+    private void simulateRandomRace(MouseEvent event) throws IOException {
         Stage stage = (Stage) ((Node) event.getSource()).getScene().getWindow();
         Parent root = FXMLLoader.load(getClass().getResource("simulate-random-race.fxml"));
         stage.setScene(new Scene(root, 1200, 797));

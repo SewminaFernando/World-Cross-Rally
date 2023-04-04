@@ -15,30 +15,7 @@ public class Driver {
         this.teamName = teamName;
     }
 
-    //setters
-    public void setAge(int age) {
-        this.age = age;
-    }
-
-    public void setCurrentPoints(int currentPoints) {
-        this.currentPoints = currentPoints;
-    }
-
-    public void setFullName(String fullName) {
-        this.fullName = fullName;
-    }
-
-    public void setCarModel(String carModel) {
-        this.carModel = carModel;
-    }
-
-    public void setTeamName(String teamName) {
-        this.teamName = teamName;
-    }
-
-    //getters
-
-
+    //Getter Methods
     public int getAge() {
         return age;
     }

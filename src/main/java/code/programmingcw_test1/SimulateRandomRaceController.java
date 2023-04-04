@@ -12,17 +12,18 @@ import javafx.scene.Scene;
 import javafx.scene.control.*;
 import javafx.scene.control.cell.PropertyValueFactory;
 import javafx.scene.input.MouseEvent;
+import javafx.scene.paint.Color;
 import javafx.scene.text.Text;
 import javafx.stage.Stage;
 import javafx.util.Duration;
 
-import java.io.FileWriter;
 import java.io.IOException;
-import java.io.Writer;
 import java.net.URL;
 import java.time.LocalDate;
 import java.time.temporal.ChronoUnit;
 import java.util.*;
+
+import static java.lang.Integer.parseInt;
 
 public class SimulateRandomRaceController implements Initializable {
     @FXML
@@ -69,20 +70,18 @@ public class SimulateRandomRaceController implements Initializable {
         locationColumn.setCellValueFactory(new PropertyValueFactory<>("location"));
         dateColumn.setCellValueFactory(new PropertyValueFactory<>("date"));
 
-
         noOfDrivers.setText(Integer.toString(DriverList.driverList.size()));
 
         date.setEditable(false);
-
-
     }
+
     @FXML
-    void backToMenu(MouseEvent event) throws IOException {
+    private void backToMenu(MouseEvent event) throws IOException {
         new MainController().navigateToMenu(event);
     }
 
     @FXML
-    void viewPastRaces(MouseEvent event) throws IOException {
+    private void viewPastRaces(MouseEvent event) throws IOException {
         Stage stage = (Stage) ((Node) event.getSource()).getScene().getWindow();
         Parent root = FXMLLoader.load(getClass().getResource("view-past-races.fxml"));
         stage.setScene(new Scene(root, 1200, 797));
@@ -90,18 +89,18 @@ public class SimulateRandomRaceController implements Initializable {
 
 
     @FXML
-    void generateRandomRace(MouseEvent event) {
+    private void generateRandomRace(MouseEvent event) {
         try {
             if (!(isFilled())) {
                 throw new Exception("Please fill all the fields.");
             }
-            int noOfCandidate = Integer.parseInt(numberOfCandidates.getText());
+            int noOfCandidate = parseInt(numberOfCandidates.getText());
 
             if (noOfCandidate > DriverList.driverList.size()) {
-                throw new Exception("Don't have enough drivers");
+                throw new Exception("Don't have enough drivers in the program");
             }
             if (noOfCandidate<3){
-                throw new Exception("You should enter 3 or more number of drivers");
+                throw new Exception("You should enter 3 or more drivers to Generate the race.");
             }
             LocalDate selectedDate = date.getValue();
             LocalDate fixedDate = LocalDate.of(2022, 1, 1);
@@ -141,9 +140,10 @@ public class SimulateRandomRaceController implements Initializable {
                 PlayersList.player.add(player);
                 players.add(player);
             }
-                standingTable.setItems(players);
-                cleatFields();
-                saveData();
+            displayMsg.setTextFill(Color.GREEN);
+            displayMsg.setText("See the Results.....");
+            standingTable.setItems(players);
+            clearFields(event);
         }catch (NumberFormatException exception){
             displayMsg.setText("Invalid Input");
         }catch (Exception e){
@@ -152,32 +152,19 @@ public class SimulateRandomRaceController implements Initializable {
         fadeErrorMessage();
     }
 
-
-    public void saveData(){
-        Writer records = null;
-        try {
-            records = new FileWriter("src/main/java/csvfiles/PastRandomRaces.csv",false);
-            for (Player player :
-                    PlayersList.player) {
-                records.write(player.date + "," +
-                        player.location + "," +
-                        player.rank + "," +
-                        player.fullName + "," +
-                        player.teamName + "," +
-                        player.currentPoints + "," +
-                        player.daysBetween +"\n");
-            }
-            records.close();
-        }catch (IOException e){
-            throw new RuntimeException(e);
-        }
-    }
-    void cleatFields(){
+    @FXML
+    private void clearFields(MouseEvent event){
         numberOfCandidates.clear();
         date.setValue(null);
     }
 
-    boolean isFilled(){
+    @FXML
+    private void retrieveData(MouseEvent event){
+        FileHandler.loadDriversFromCSV();
+        noOfDrivers.setText(Integer.toString(DriverList.driverList.size()));
+    }
+
+    private boolean isFilled(){
         if (numberOfCandidates.getText().isEmpty() || date.getValue() == null){
             return false;
         }
@@ -185,7 +172,7 @@ public class SimulateRandomRaceController implements Initializable {
     }
 
     private void fadeErrorMessage(){
-        FadeTransition fadeTransition = new FadeTransition(Duration.seconds(5), displayMsg);
+        FadeTransition fadeTransition = new FadeTransition(Duration.seconds(2), displayMsg);
         fadeTransition.setFromValue(1);
         fadeTransition.setToValue(0.0);
         fadeTransition.setCycleCount(1);

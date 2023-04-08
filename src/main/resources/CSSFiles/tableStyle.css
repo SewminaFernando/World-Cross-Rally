@@ -1,71 +1,66 @@
-.table-view{
-   -fx-background-color: transparent;
+/*************************/
+/*    Table Style    */
+/*************************/
+
+.table-view {
+    -fx-background-color: transparent;
 }
 
-
-.table-view .column-header-background{
-    -fx-background-color: linear-gradient(#131313 0%, #424141 100%);
-
-}
-
-.table-view .column-header-background .label{
-    -fx-text-fill: white;
-
-}
-
+.table-view .corner,
 .table-view .column-header {
     -fx-background-color: transparent;
 }
 
-.table-row-cell{
-    -fx-background-color:  #616161;
+.table-view .column-header-background {
+    -fx-background-color: linear-gradient(to bottom, #000000, #333333);
+}
+
+.table-view .column-header-background .label {
+    -fx-text-fill: white;
+}
+
+.table-row-cell {
+    -fx-background-color:  #444444;
     -fx-text-background-color: white;
 }
 
-.table-row-cell:odd{
-    -fx-background-color:  #424242;
-    -fx-text-background-color: white;
+.table-row-cell:even {
+    -fx-background-color:  #5b5b5b;
 }
 
 .table-row-cell:selected {
-    -fx-background-color: red;
+    -fx-background-color: #cc0000;
+    -fx-text-background-color: white;
+    -fx-font-weight: bold;
 }
 
-.table-row-cell:filled:hover{
+.table-row-cell:filled:hover {
     -fx-background-color: white;
-    -fx-background-insets: 0, 0 0 0 0;
-    -fx-text-background-color:#ae0909;
-    -fx-font-weight:bold;
+    -fx-text-background-color: #cc0000;
+    -fx-font-weight: bold;
 }
 
-.scroll-pane {
-    -fx-background-color: black;
+/*************************/
+/*    ScrollBar Style    */
+/*************************/
+
+.scroll-bar {
+    -fx-background-color: transparent;
 }
 
-.scroll-bar:horizontal, .scroll-bar:vertical{
-    -fx-background-color:transparent;
-}
-
-.increment-button, .decrement-button {
+.scroll-bar > .increment-button,
+.scroll-bar > .decrement-button {
     -fx-background-color: transparent;
     -fx-border-color: transparent;
 }
 
-.scroll-pane .corner {
-    -fx-background-color: black ;
-}
-.scroll-bar:horizontal .track,
-.scroll-bar:vertical .track{
+.scroll-bar > .track {
     -fx-background-color: transparent;
     -fx-border-color: transparent;
-    -fx-background-radius: 0em;
+    -fx-background-radius: 0;
 }
 
-.scroll-bar:horizontal .thumb,
-.scroll-bar:vertical .thumb {
-    -fx-background-color: grey;
+.scroll-bar > .thumb {
+    -fx-background-color: linear-gradient(to bottom, #444444, #5b5b5b);
     -fx-background-radius: 5em;
-}
-.table-view .corner {
-    -fx-background-color: transparent;
 }

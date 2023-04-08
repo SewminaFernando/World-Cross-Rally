@@ -19,8 +19,9 @@ import java.net.URL;
 import java.time.LocalDate;
 import java.util.ResourceBundle;
 
-public class ViewPastRaces implements Initializable {
+public class ViewPastRacesController implements Initializable {
 
+    //FXML Elements
     @FXML
     private TableColumn<Player, LocalDate> dateColumn;
 
@@ -37,11 +38,13 @@ public class ViewPastRaces implements Initializable {
     private TableColumn<Player, Integer> rankColumn;
 
     @FXML
-    private TableView<Player> standingTable;
-
-    @FXML
     private TableColumn<Driver, String> teamColumn;
 
+    @FXML
+    private TableView<Player> standingTable;
+
+
+    //Initialize the view
     public void initialize(URL url, ResourceBundle resource) {
 
         // Set up the table columns
@@ -52,15 +55,18 @@ public class ViewPastRaces implements Initializable {
         locationColumn.setCellValueFactory(new PropertyValueFactory<>("location"));
         dateColumn.setCellValueFactory(new PropertyValueFactory<>("date"));
 
+        // Get the list of players sorted by date and set it as the table data
         ObservableList<Player> players = FXCollections.observableArrayList(new PlayersList().sortByDate());
         standingTable.setItems(players);
     }
 
+    // Handle the back to menu button click
     @FXML
     private void backToMenu(MouseEvent event) throws IOException {
         new MainController().navigateToMenu(event);
     }
 
+    // Handle the simulate random race button click
     @FXML
     private void simulateRandomRace(MouseEvent event) throws IOException {
         Stage stage = (Stage) ((Node) event.getSource()).getScene().getWindow();

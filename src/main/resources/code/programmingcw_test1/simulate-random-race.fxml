@@ -89,7 +89,7 @@
           <TableColumn fx:id="dateColumn" prefWidth="165.3333625793457" text="Date" />
           <TableColumn fx:id="locationColumn" prefWidth="182.933349609375" text="Location" />
             <TableColumn fx:id="rankColumn" prefWidth="105.86663818359375" text="Rank" />
-            <TableColumn fx:id="nameColumn" prefWidth="381.8666687011719" text="Name" />
+            <TableColumn fx:id="nameColumn" prefWidth="376.8666687011719" text="Name" />
             <TableColumn fx:id="teamColumn" prefWidth="181.8665771484375" text="Team" />
             <TableColumn fx:id="pointsColumn" prefWidth="133.60009765625" text="Points" />
         </columns>

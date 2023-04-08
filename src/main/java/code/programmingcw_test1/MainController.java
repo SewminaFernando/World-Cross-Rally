@@ -13,14 +13,21 @@ import java.io.IOException;
 public class MainController {
 
 
+    // Go to the menu stage when button is clicked
     @FXML
-    void goToMenu(MouseEvent event) throws IOException {
-        FileHandler handler = new FileHandler();
-        handler.loadPlayersFromCSV();
+    private void goToMenu(MouseEvent event) throws IOException {
+        // Loading previous races to the program
+        RaceCSVHandler raceHandler = new RaceCSVHandler("src/main/java/csvfiles/PastRandomRaces.csv");
+        raceHandler.loadData();
 
         navigateToMenu(event);
     }
 
+    /**
+     * This method navigates to the Menu of the program
+     * @param event the mouse Event
+     * @throws IOException If an I/O error occurs
+     */
     public void navigateToMenu(MouseEvent event) throws IOException {
         Stage stage = (Stage) ((Node) event.getSource()).getScene().getWindow();
         Parent root = FXMLLoader.load(getClass().getResource("menu.fxml"));

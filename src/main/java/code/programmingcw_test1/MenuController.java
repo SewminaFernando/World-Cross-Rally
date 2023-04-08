@@ -12,6 +12,7 @@ import java.io.IOException;
 
 public class MenuController {
 
+    // Navigate to the Main Stage when mouse clicked the button
     @FXML
     private void backToMain(MouseEvent event) throws IOException {
         Stage stage = (Stage) ((Node) event.getSource()).getScene().getWindow();
@@ -19,6 +20,7 @@ public class MenuController {
         stage.setScene(new Scene(root, 1200, 797));
     }
 
+    // Navigate to the Drivers Page Stage when mouse is clicked
     @FXML
     private void goToDriversPage(MouseEvent event) throws IOException {
         Stage stage = (Stage) ((Node) event.getSource()).getScene().getWindow();
@@ -26,6 +28,7 @@ public class MenuController {
         stage.setScene(new Scene(root, 1200, 797));
     }
 
+    // Navigate to the Random Race Stage when mouse is clicked
     @FXML
     private void goToRandomRace(MouseEvent event) throws IOException {
         Stage stage = (Stage) ((Node) event.getSource()).getScene().getWindow();

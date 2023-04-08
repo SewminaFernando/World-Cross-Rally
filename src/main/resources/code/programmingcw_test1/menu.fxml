@@ -26,7 +26,7 @@
          </image>
       </ImageView>
       <AnchorPane layoutY="-2.0" prefHeight="35.2" prefWidth="902.0" styleClass="background" stylesheets="@../../CSSFiles/main.css" />
-      <Text layoutX="456.0" layoutY="182.0" strokeType="OUTSIDE" strokeWidth="0.0" text="MENU" wrappingWidth="276.97076416015625">
+      <Text layoutX="456.0" layoutY="206.0" strokeType="OUTSIDE" strokeWidth="0.0" text="MENU" wrappingWidth="276.97076416015625">
          <font>
             <Font name="SansSerif Bold Italic" size="90.0" />
          </font>
@@ -68,7 +68,7 @@
                                     <Font size="40.0" />
                                  </font>
                               </Text>
-                              <Text fill="WHITE" layoutX="21.0" layoutY="82.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Users can view the drivers' details as a table with column Name, Age, Car Model, Team Name, and Current Points.Users are allowed to delete or update driver's details." wrappingWidth="412.00323486328125">
+                              <Text fill="WHITE" layoutX="21.0" layoutY="82.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Users can view the driver details table.  Also, they can add new drivers to the championship, delete existing drivers, and update the details of drivers." wrappingWidth="436.53662109375">
                                  <font>
                                     <Font size="18.0" />
                                  </font>
@@ -108,7 +108,7 @@
                                     <Font size="40.0" />
                                  </font>
                               </Text>
-                              <Text fill="WHITE" layoutX="19.0" layoutY="93.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Users can simulate the Rando Races and view the standings table according to ranks. User can view the all past Random Races." wrappingWidth="366.13665771484375">
+                              <Text fill="WHITE" layoutX="19.0" layoutY="93.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Users can simulate random races and view the leaderboard. Users are allowed to view the history of the races simulated. " wrappingWidth="366.13665771484375">
                                  <font>
                                     <Font size="18.0" />
                                  </font>
@@ -146,10 +146,15 @@
             <Font size="9.0" />
          </font>
       </Button>
-      <ImageView fitHeight="241.0" fitWidth="248.0" layoutX="959.0" layoutY="-3.0" pickOnBounds="true" preserveRatio="true">
+      <ImageView fitHeight="241.0" fitWidth="248.0" layoutX="966.0" layoutY="-18.0" pickOnBounds="true" preserveRatio="true">
          <image>
             <Image url="@../../Images/Car.E.png" />
          </image>
       </ImageView>
+      <Text fill="#66faee" fontSmoothingType="LCD" layoutX="287.0" layoutY="85.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Global RX Championship" textAlignment="CENTER" wrappingWidth="608.6887817382812">
+         <font>
+            <Font name="Arial Rounded MT Bold" size="46.0" />
+         </font>
+      </Text>
    </children>
 </AnchorPane>

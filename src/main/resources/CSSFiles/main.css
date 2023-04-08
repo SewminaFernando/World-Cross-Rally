@@ -1,3 +1,7 @@
+/**********************************/
+/*    Get Started Button Style    */
+/**********************************/
+
 .get-started-button{
     -fx-border-color: #66fcf1;
     -fx-border-width: 2;
@@ -33,22 +37,9 @@
     -fx-text-fill: #000000;
 }
 
-/*
-.back-button{
-    -fx-background-radius: 50;
-    -fx-background-color: transparent;
-}
-
-.back-button:hover{
-    -fx-background-radius: 50;
-    -fx-background-color: #66fcf1;
-}
-
-.back-button:pressed{
-    -fx-background-radius: 50;
-    -fx-background-color: #45a29e;
-}
-*/
+/***************************/
+/*    Menu Button Style    */
+/***************************/
 
 .menu-button{
     -fx-border-color: #66fcf1;
@@ -73,11 +64,15 @@
     -fx-background-color: rgba(31, 41, 51, 0.75);
 }
 
+/*********************************/
+/*    Navigation Button Style    */
+/*********************************/
+
 .navbar-buttons{
     -fx-background-color : #1f2833;
     -fx-font-family:"Segoe UI", Helvetica, Arial, sans-serif;
     -fx-font-weight: bold;
-    -fx-font-size: 16; /* 12 */
+    -fx-font-size: 16;
     -fx-text-fill: #45a29e;
 }
 
@@ -85,15 +80,19 @@
     -fx-background-color : #1f3843;
     -fx-font-family:"Segoe UI", Helvetica, Arial, sans-serif;
     -fx-font-weight: bold;
-    -fx-font-size: 16; /* 12 */
+    -fx-font-size: 16;
     -fx-text-fill: #45a29e;
 }
+
+/*********************************/
+/*    DriverPage Button Style    */
+/*********************************/
 
 .driver-buttons{
     -fx-background-color : #1f2833;
     -fx-font-family:"Segoe UI", Helvetica, Arial, sans-serif;
     -fx-font-weight: bold;
-    -fx-font-size: 16; /* 12 */
+    -fx-font-size: 16;
     -fx-text-fill: #66fcf1;
 }
 
@@ -104,6 +103,10 @@
     -fx-font-size: 16; /* 12 */
     -fx-text-fill: #66fcf1;
 }
+
+/**************************/
+/*    Text Field Style    */
+/**************************/
 
 .text-field {
     -fx-background-color: transparent;
@@ -129,6 +132,10 @@
     -fx-text-fill: #ffffff;
 }
 
+/***************************/
+/*    Date Picker Style    */
+/***************************/
+
 .date-picker {
     -fx-background-color: #1f2833;
 }
@@ -148,4 +155,5 @@
 .date-picker > .text-field {
     -fx-background-color: #0b0c10;
     -fx-text-fill: #c5c6c7;
+    -fx-border-radius: 25;
 }

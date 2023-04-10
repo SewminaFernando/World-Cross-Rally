@@ -82,7 +82,7 @@ public class DriverPageController implements Initializable{
         });
     }
 
-    // Add drivers to the driver list if user inputs
+    // Add drivers to the driver list if user inputs are valid
     @FXML
     private void addDriver(MouseEvent event) {
         // Get data from the text fields
@@ -163,7 +163,6 @@ public class DriverPageController implements Initializable{
         fadeErrorMessage();
         reloadTable();
         clearFields();
-
     }
 
     // Update the Driver Details
@@ -277,7 +276,7 @@ public class DriverPageController implements Initializable{
 
             // Loop through the original data and add any matches to the filtered list
             for (Driver data : originalData) {
-                if (dataMatchesSearchCriteria(data, newValue)) {
+                if (dataMatchesWithSearch(data, newValue)) {
                     filteredData.add(data);
                 }
             }
@@ -291,7 +290,7 @@ public class DriverPageController implements Initializable{
      @param newValue the search text to check against
      @return true if the driver's name contains the search text, otherwise false
      */
-    private boolean dataMatchesSearchCriteria(Driver data, String newValue) {
+    private boolean dataMatchesWithSearch(Driver data, String newValue) {
         // checks the search field is empty or null
         if (newValue == null || newValue.isEmpty()) {
             return true; //returns true for get all data
@@ -341,6 +340,7 @@ public class DriverPageController implements Initializable{
     /**
      * Fades out the error message label over a duration of 5 seconds.
      */
+    //references : https://docs.oracle.com/javafx/2/api/javafx/animation/FadeTransition.html
     private void fadeErrorMessage(){
         // Create a fade transition animation
         FadeTransition fadeTransition = new FadeTransition(Duration.seconds(5), errorMsg);

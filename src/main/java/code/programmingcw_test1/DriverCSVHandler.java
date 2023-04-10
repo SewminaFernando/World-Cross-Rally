@@ -18,7 +18,7 @@ public class DriverCSVHandler extends CSVHandler {
     }
 
     /**
-     * Loads driver data from the CSV file and stores it in the driverList.
+     * Loads driver details from the CSV file and stores it in the driverList.
      * Each line of the CSV file contains with the following fields, separated by commas:
      * - Full name of the driver
      * - Age of the driver

@@ -63,6 +63,9 @@ public class Player {
         return fullName;
     }
 
+    /**
+     * @return the team name of the player
+     */
     public String getTeamName() {
         return teamName;
     }

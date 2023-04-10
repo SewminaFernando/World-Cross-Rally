@@ -9,12 +9,16 @@ class DataValidationTest {
 
     @Test
     public void haveEmptyTextFields() {
+        // DriverPageControler validators (checks the empty list)
+        // All fields are empty
         Assertions.assertTrue(DataValidation.haveEmptyTextFields("","","","",""));
+        //4 fields are empty
         Assertions.assertTrue(DataValidation.haveEmptyTextFields("data","","","",""));
         Assertions.assertTrue(DataValidation.haveEmptyTextFields("","data","","",""));
         Assertions.assertTrue(DataValidation.haveEmptyTextFields("","","data","",""));
         Assertions.assertTrue(DataValidation.haveEmptyTextFields("","","","data",""));
         Assertions.assertTrue(DataValidation.haveEmptyTextFields("","","","","data"));
+        // 3 fields are empty
         Assertions.assertTrue(DataValidation.haveEmptyTextFields("data","data","","",""));
         Assertions.assertTrue(DataValidation.haveEmptyTextFields("data","","data","",""));
         Assertions.assertTrue(DataValidation.haveEmptyTextFields("data","","","data",""));
@@ -25,23 +29,30 @@ class DataValidationTest {
         Assertions.assertTrue(DataValidation.haveEmptyTextFields("","","data","data",""));
         Assertions.assertTrue(DataValidation.haveEmptyTextFields("","","data","","data"));
         Assertions.assertTrue(DataValidation.haveEmptyTextFields("","","","data","data"));
+        // 2 fields are empty
         Assertions.assertTrue(DataValidation.haveEmptyTextFields("data","data","data","",""));
         Assertions.assertTrue(DataValidation.haveEmptyTextFields("data","","data","data",""));
         Assertions.assertTrue(DataValidation.haveEmptyTextFields("data","","","data","data"));
         Assertions.assertTrue(DataValidation.haveEmptyTextFields("data","data","","data",""));
         Assertions.assertTrue(DataValidation.haveEmptyTextFields("data","data","","","data"));
         Assertions.assertTrue(DataValidation.haveEmptyTextFields("data","","data","","data"));
+        // 1 Field is empty
         Assertions.assertTrue(DataValidation.haveEmptyTextFields("data","data","data","data",""));
         Assertions.assertTrue(DataValidation.haveEmptyTextFields("","data","data","data","data"));
         Assertions.assertTrue(DataValidation.haveEmptyTextFields("data","","data","data","data"));
         Assertions.assertTrue(DataValidation.haveEmptyTextFields("data","data","","data","data"));
         Assertions.assertTrue(DataValidation.haveEmptyTextFields("data","data","data","","data"));
+        // Fields are not empty
         Assertions.assertFalse(DataValidation.haveEmptyTextFields("data","data","data","data","data"));
 
 
+        //SimulateRandomRaceController checks empty fields
+        // All fiels are empty
         Assertions.assertTrue(DataValidation.haveEmptyTextFields("",null));
+        // One field is empty
         Assertions.assertTrue(DataValidation.haveEmptyTextFields("5",null));
         Assertions.assertTrue(DataValidation.haveEmptyTextFields("", LocalDate.of(2022, 1, 1)));
+        // All fields are not empty
         Assertions.assertFalse(DataValidation.haveEmptyTextFields("10", LocalDate.of(2022, 1, 1)));
     }
 
